@@ -55,6 +55,11 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true },
   },
+  verification: {
+    other: {
+      "naver-site-verification": "7f3e1a31b9debaac49979feb4e6be280bc8ebca8",
+    },
+  },
   alternates: { canonical: SITE_URL },
   icons: {
     icon: [
