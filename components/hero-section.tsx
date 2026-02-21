@@ -17,7 +17,6 @@ const badges = [
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Image */}
       <div className="absolute inset-0">
         <Image
           src="/images/hero-window-before-after.png"
@@ -32,14 +31,11 @@ export function HeroSection() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-5 lg:px-10 pt-[calc(8.5rem+env(safe-area-inset-top,0px))] pb-24 sm:pt-28 sm:pb-28 md:pt-40 md:pb-40 w-full">
         <div className="max-w-3xl">
-          {/* Headline */}
           <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.2] tracking-tight text-white text-balance">
             {"아파트 창문 청소,"}
             <br />
             <span className="text-primary">{"아직도 혼자 하세요?"}</span>
           </h1>
-
-          {/* Subtitle */}
           <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-white/90 leading-loose max-w-2xl">
             {"에코백스 윈봇 + 전문가 수작업으로 꼼꼼히 마감합니다."}
             <br className="sm:block" />
@@ -47,13 +43,9 @@ export function HeroSection() {
               {"거실창 8만원부터 · 층수 제한 없음 · 하루 최대 3집"}
             </span>
           </p>
-
-          {/* Small note */}
           <p className="mt-3 text-sm text-white/60">
             {"한 집 2~3시간 작업"}
           </p>
-
-          {/* CTAs */}
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3">
             <Button
               asChild
@@ -78,8 +70,6 @@ export function HeroSection() {
               </a>
             </Button>
           </div>
-
-          {/* Trust Badges */}
           <div className="mt-8 sm:mt-12 grid grid-cols-2 sm:flex sm:flex-wrap gap-2 sm:gap-3">
             {badges.map((badge) => (
               <div

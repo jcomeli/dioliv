@@ -40,7 +40,7 @@ export function Navbar() {
 
         <div className="hidden md:flex items-center gap-7 shrink-0">
           {[
-            { href: KAKAO_CHANNEL, label: "드론 외벽청소 문의", external: true },
+            { href: KAKAO_CHANNEL, label: "드론 외벽청소 문의", external: true, highlight: true },
             { href: "#why", label: "문제점" },
             { href: "#solution", label: "해결책" },
             { href: "#reviews", label: "후기" },
@@ -51,7 +51,9 @@ export function Navbar() {
               key={link.label}
               href={link.href}
               {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className={`text-sm font-semibold hover:opacity-80 transition-opacity duration-300 ${scrolled ? "text-foreground" : "text-white"}`}
+              className={`text-sm font-semibold hover:opacity-80 transition-opacity duration-300 ${
+                link.highlight ? "text-primary" : scrolled ? "text-foreground" : "text-white"
+              }`}
             >
               {link.label}
             </a>
@@ -95,7 +97,7 @@ export function Navbar() {
         <div className="md:hidden border-t border-border bg-background/98 backdrop-blur-xl max-h-[85vh] overflow-y-auto">
           <div className="flex flex-col px-4 py-4 gap-0.5">
             {[
-              { href: KAKAO_CHANNEL, label: "드론 외벽청소 문의", external: true },
+              { href: KAKAO_CHANNEL, label: "드론 외벽청소 문의", external: true, highlight: true },
               { href: "#why", label: "문제점" },
               { href: "#solution", label: "해결책" },
               { href: "#reviews", label: "후기" },
@@ -107,7 +109,7 @@ export function Navbar() {
                 href={link.href}
                 {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 onClick={() => setIsOpen(false)}
-                className="text-sm font-semibold text-foreground hover:opacity-80 active:bg-muted/50 py-3.5 px-1 rounded-lg transition-colors -mx-1"
+                className={`text-sm font-semibold hover:opacity-80 active:bg-muted/50 py-3.5 px-1 rounded-lg transition-colors -mx-1 ${link.highlight ? "text-primary" : "text-foreground"}`}
               >
                 {link.label}
               </a>

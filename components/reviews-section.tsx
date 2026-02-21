@@ -40,7 +40,7 @@ function StarRating({ rating }: { rating: number }) {
         <Star
           key={i}
           className={`h-4 w-4 ${
-            i < rating ? "fill-amber-400 text-amber-400" : "fill-muted text-muted"
+            i < rating ? "fill-[#FEE500] text-[#FEE500]" : "fill-muted text-muted"
           }`}
         />
       ))}
@@ -67,7 +67,6 @@ export function ReviewsSection() {
   return (
     <section ref={sectionRef} id="reviews" className="py-20 sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
-        {/* Section Header */}
         <div className="text-center mb-14 md:mb-20">
           <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">
             {"Reviews"}
@@ -80,8 +79,6 @@ export function ReviewsSection() {
             {"당근마켓에서 직접 확인하실 수 있습니다."}
           </p>
         </div>
-
-        {/* Main Review Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-7">
           {mainReviews.map((review, i) => (
             <div
@@ -107,8 +104,6 @@ export function ReviewsSection() {
             </div>
           ))}
         </div>
-
-        {/* One-liner reviews */}
         <div className="mt-12 flex flex-col gap-3">
           {oneLiners.map((item, i) => (
             <div
@@ -130,8 +125,6 @@ export function ReviewsSection() {
             </div>
           ))}
         </div>
-
-        {/* Daangn CTA */}
         <div className="mt-10 text-center">
           <Button
             asChild

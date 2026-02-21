@@ -10,7 +10,6 @@ export function Footer() {
     <footer className="border-t border-border bg-card py-8 sm:py-10 md:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          {/* Brand */}
           <a href="#" className="flex items-center shrink-0">
             <Image
               src="/images/logo.png"
@@ -21,7 +20,6 @@ export function Footer() {
             />
           </a>
 
-          {/* Links */}
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
             <a href={NAVER_PLACE} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:text-foreground transition-colors">
               네이버 플레이스

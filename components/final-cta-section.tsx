@@ -7,7 +7,6 @@ const PHONE_NUMBER = "tel:010-2643-1922"
 export function FinalCtaSection() {
   return (
     <section className="relative py-20 sm:py-24 md:py-36 overflow-hidden bg-[#0B1120]">
-      {/* Subtle pattern */}
       <div className="absolute inset-0 opacity-[0.03]">
         <div className="absolute inset-0" style={{
           backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",

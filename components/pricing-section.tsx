@@ -73,7 +73,6 @@ export function PricingSection() {
   return (
     <section ref={sectionRef} id="pricing" className="py-20 sm:py-24 md:py-32 bg-secondary/50">
       <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
-        {/* Section Header */}
         <div className="text-center mb-14 md:mb-20">
           <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">
             {"Pricing"}
@@ -87,7 +86,6 @@ export function PricingSection() {
           </p>
         </div>
 
-        {/* Pricing Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-7 items-start">
           {plans.map((plan, i) => (
             <div
@@ -166,7 +164,6 @@ export function PricingSection() {
           ))}
         </div>
 
-        {/* Group Buy Banner - Prominent */}
         <div className="mt-12 rounded-2xl border-2 border-primary bg-primary/5 p-6 md:p-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-5">
             <div className="flex items-center gap-4">
@@ -206,7 +203,6 @@ export function PricingSection() {
           </div>
         </div>
 
-        {/* Robot rental banner */}
         <div className="mt-6 rounded-2xl border-2 border-dashed border-primary/30 bg-primary/5 p-6 md:p-8 text-center">
           <p className="text-lg font-bold text-foreground mb-2">
             {"가격이 부담이라면? 창문로봇청소기 대여로 셋업도 가능!"}

@@ -49,7 +49,6 @@ export function ProblemSection() {
   return (
     <section ref={sectionRef} id="why" className="py-20 sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
-        {/* Section Header */}
         <div className="text-center mb-14 md:mb-20">
           <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">
             {"Problem"}
@@ -61,8 +60,6 @@ export function ProblemSection() {
             {"에게 맡겨야 할까요?"}
           </h2>
         </div>
-
-        {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-7">
           {problems.map((problem, i) => (
             <div
@@ -77,13 +74,11 @@ export function ProblemSection() {
               <span className="text-6xl font-extrabold text-border/60 absolute top-5 right-7 select-none">
                 {problem.number}
               </span>
-
               <div className={`flex h-12 w-12 items-center justify-center rounded-xl mb-5 ${
                 i === 1 ? "bg-primary/10" : "bg-destructive/8"
               }`}>
                 <problem.icon className={`h-6 w-6 ${i === 1 ? "text-primary" : "text-destructive"}`} />
               </div>
-
               <h3 className="text-lg font-bold text-card-foreground mb-1">
                 {problem.title}
               </h3>

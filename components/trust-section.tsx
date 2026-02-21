@@ -79,14 +79,13 @@ export function TrustSection() {
           ))}
         </div>
 
-        {/* Commercial / Store banner - prominent */}
-        <div className={`mt-10 rounded-2xl border-2 border-accent bg-accent/10 p-6 md:p-8 transition-all duration-700 delay-300 ${
+        <div className={`mt-10 rounded-2xl border-2 border-[#FEE500]/50 bg-[#FEE500]/10 p-6 md:p-8 transition-all duration-700 delay-300 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}>
           <div className="flex flex-col md:flex-row items-center justify-between gap-5">
             <div className="flex items-center gap-4">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/20 shrink-0">
-                <Store className="h-7 w-7 text-accent-foreground" />
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#FEE500]/20 shrink-0">
+                <Store className="h-7 w-7 text-[#191919]" />
               </div>
               <div>
                 <h3 className="text-lg md:text-xl font-extrabold text-foreground">
@@ -109,7 +108,6 @@ export function TrustSection() {
           </div>
         </div>
 
-        {/* Disclaimer */}
         <div className="mt-6 flex items-start gap-3 rounded-2xl bg-muted/50 border border-border p-5">
           <Info className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
           <p className="text-xs text-muted-foreground leading-loose">

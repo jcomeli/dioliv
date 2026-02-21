@@ -43,7 +43,6 @@ export function SolutionSection() {
   return (
     <section ref={sectionRef} id="solution" className="py-20 sm:py-24 md:py-32 bg-secondary/50">
       <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
-        {/* Section Header */}
         <div className="text-center mb-14 md:mb-20">
           <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">
             {"Solution"}
@@ -53,8 +52,6 @@ export function SolutionSection() {
             <span className="text-primary">{" 3가지 해결책"}</span>
           </h2>
         </div>
-
-        {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-7">
           {solutions.map((solution, i) => (
             <div
@@ -78,8 +75,6 @@ export function SolutionSection() {
             </div>
           ))}
         </div>
-
-        {/* Honest expectation note */}
         <div className="mt-10 rounded-2xl border border-border bg-card p-5 md:p-6 text-center">
           <p className="text-sm text-muted-foreground leading-loose">
             {"※ 유리에 오래 고착된 일부 오염은 100% 제거가 어려울 수 있으며, 현장 상태에 따라 안내드립니다."}

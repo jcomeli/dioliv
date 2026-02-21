@@ -52,7 +52,6 @@ export function StepsSection() {
             {"면 끝."}
           </h2>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-7 lg:gap-10">
           {steps.map((step, i) => (
             <div
@@ -64,11 +63,9 @@ export function StepsSection() {
               }`}
               style={{ transitionDelay: `${i * 200}ms` }}
             >
-              {/* Connector line (desktop only) */}
               {i < steps.length - 1 && (
                 <div className="hidden md:block absolute top-10 left-[60%] w-[80%] h-px bg-white/10" />
               )}
-
               <div className="relative inline-flex flex-col items-center">
                 <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10 mb-5 border border-primary/20">
                   <step.icon className="h-9 w-9 text-primary" />
@@ -77,7 +74,6 @@ export function StepsSection() {
                   {step.number}
                 </span>
               </div>
-
               <h3 className="text-xl font-bold text-white mb-2">
                 {step.title}
               </h3>
