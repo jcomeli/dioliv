@@ -10,7 +10,7 @@ const problems = [
     title: "외부창 위험",
     subtitle: "추락 / 무릎 꿇은 자세",
     description:
-      "고층 아파트 외부창은 전문 장비 없이 청소하면 추락 사고 위험이 큽니다. 불편한 자세로 허리·어깨 부상도 발생할 수 있습니다.",
+      "전문 장비 없이 외부창을 닦으면 추락 위험이 높습니다. 무리한 자세로 허리·어깨 부상으로 이어질 수 있습니다.",
   },
   {
     icon: Coins,
@@ -18,7 +18,7 @@ const problems = [
     title: "최강 가성비",
     subtitle: "국내 최저가 보장",
     description:
-      "집주인/세입자 누구나 부담 없이 이용할 수 있는 가격으로, 사는 동안 가려졌던 '숨은 뷰'를 선명하게 확인할 수 있습니다.",
+      "집주인·세입자 모두 부담 없는 가격. 그동안 놓쳤던 뷰, 이제 선명하게 되찾으세요.",
   },
   {
     icon: Timer,
@@ -26,7 +26,7 @@ const problems = [
     title: "시간 낭비",
     subtitle: "주말 반나절 소모",
     description:
-      "직접 청소하면 준비부터 마무리까지 반나절이 금방 지납니다. 소중한 주말을 청소에 쓰지 마세요.",
+      "준비부터 마무리까지 주말 반나절 소모. 소중한 시간을 청소에 쓰지 마세요.",
   },
 ]
 
@@ -90,7 +90,7 @@ export function ProblemSection() {
               <p className={`text-sm font-semibold mb-3 ${i === 1 ? "text-primary" : "text-destructive/80"}`}>
                 {problem.subtitle}
               </p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-loose">
                 {problem.description}
               </p>
             </div>

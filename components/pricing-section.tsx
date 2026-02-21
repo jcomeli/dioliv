@@ -79,10 +79,10 @@ export function PricingSection() {
             {"Pricing"}
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight text-balance">
-            {"투명한"}
-            <span className="text-primary">{" 가격 안내"}</span>
+            {"추가 비용 없는 투명한 "}
+            <span className="text-primary">{"가격"}</span>
           </h2>
-          <p className="mt-4 text-muted-foreground text-base md:text-lg max-w-xl mx-auto">
+          <p className="mt-4 text-muted-foreground text-base md:text-lg leading-loose max-w-xl mx-auto">
             {"창틀/방충망 청소는 별도 비용(옵션)입니다."}
           </p>
         </div>
@@ -177,8 +177,8 @@ export function PricingSection() {
                 <h3 className="text-lg md:text-xl font-extrabold text-foreground">
                   {"단지 공동구매 환영"}
                 </h3>
-                <p className="text-sm text-muted-foreground mt-1">
-                  {"같은 단지 이웃들과 함께 신청하면 추가 할인! 단체 문의를 환영합니다."}
+                <p className="text-sm text-muted-foreground leading-loose mt-1">
+                  {"같은 단지 이웃과 함께 신청하면 추가 할인 적용"}
                 </p>
               </div>
             </div>
@@ -211,7 +211,7 @@ export function PricingSection() {
           <p className="text-lg font-bold text-foreground mb-2">
             {"가격이 부담이라면? 창문로봇청소기 대여로 셋업도 가능!"}
           </p>
-          <p className="text-sm text-muted-foreground mb-4">
+          <p className="text-sm text-muted-foreground leading-loose mb-4">
             {"에코백스 윈봇 대여 서비스 → 스마트스토어에서 확인하세요"}
           </p>
           <Button

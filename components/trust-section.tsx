@@ -72,7 +72,7 @@ export function TrustSection() {
               <h3 className="text-base font-bold text-card-foreground mb-2">
                 {item.title}
               </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-loose">
                 {item.description}
               </p>
             </div>
@@ -92,7 +92,7 @@ export function TrustSection() {
                 <h3 className="text-lg md:text-xl font-extrabold text-foreground">
                   {"상가/매장(쇼윈도)도 가능"}
                 </h3>
-                <p className="text-sm text-muted-foreground mt-1">
+                <p className="text-sm text-muted-foreground leading-loose mt-1">
                   {"아파트 외 상가·매장 유리창도 가능합니다. 상가는 별도 문의해 주세요."}
                 </p>
               </div>
@@ -112,7 +112,7 @@ export function TrustSection() {
         {/* Disclaimer */}
         <div className="mt-6 flex items-start gap-3 rounded-2xl bg-muted/50 border border-border p-5">
           <Info className="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
-          <p className="text-xs text-muted-foreground leading-relaxed">
+          <p className="text-xs text-muted-foreground leading-loose">
             {"DIO리빙앤디자인은 에코백스 제조사/공식 판매사와 무관한 독립 서비스입니다."}
           </p>
         </div>

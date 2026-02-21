@@ -8,7 +8,7 @@ export const SITE_URL =
 export const SITE_NAME = "DIO 리빙앤디자인"
 export const SITE_TITLE = "DIO Living & Design | 동탄 아파트 창문 청소 전문"
 export const SITE_DESCRIPTION =
-  "동탄·경기남부 아파트 창문 청소 전문. 윈봇(에코백스)+수작업 마감, 안전벨트·하네스 보호, 친환경 세정제 사용. 거실창 10만원부터. 카톡 무료 견적."
+  "동탄·경기남부 아파트 창문 청소 전문. 윈봇(에코백스)+수작업 마감, 안전벨트·하네스 보호, 친환경 세정제 사용. 거실창 10만원부터. 카톡 무료 견적 · 부담 없이 문의."
 
 /** 검색/소셜용 키워드 */
 export const SITE_KEYWORDS = [

@@ -40,7 +40,7 @@ export function Footer() {
 
         <div className="mt-6 pt-6 border-t border-border">
           <p className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed break-keep">
-            디아이오리빙앤디자인(DIO Living&amp;Design) | 전화: 010-2643-1922 | 대표이사 전주형 | 사업자번호 787-19-02131 | 주소 경기 화성시 동탄구 동탄대로6길 13 B102-2-03호 | © 2026 All rights reserved.
+            디아이오리빙앤디자인(DIO Living&amp;Design) | 전화 010-2643-1922 | 대표 전주형 | 사업자번호 787-19-02131 | 주소 경기 화성시 동탄구 동탄대로6길 13 B102-2-03호 | © 2026 All rights reserved.
           </p>
         </div>
       </div>

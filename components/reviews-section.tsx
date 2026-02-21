@@ -76,7 +76,7 @@ export function ReviewsSection() {
             {"실제 고객"}
             <span className="text-primary">{" 후기"}</span>
           </h2>
-          <p className="mt-4 text-muted-foreground text-base max-w-lg mx-auto">
+          <p className="mt-4 text-muted-foreground text-base leading-loose max-w-lg mx-auto">
             {"당근마켓에서 직접 확인하실 수 있습니다."}
           </p>
         </div>
@@ -95,7 +95,7 @@ export function ReviewsSection() {
             >
               <Quote className="h-7 w-7 text-primary/15 mb-3" />
               <StarRating rating={review.rating} />
-              <p className="mt-4 text-base text-card-foreground leading-relaxed font-medium">
+              <p className="mt-4 text-base text-card-foreground leading-loose font-medium">
                 {`"${review.text}"`}
               </p>
               <div className="mt-6 pt-5 border-t border-border">
@@ -120,7 +120,7 @@ export function ReviewsSection() {
               }`}
               style={{ transitionDelay: `${300 + i * 80}ms` }}
             >
-              <p className="text-sm text-card-foreground leading-relaxed">
+              <p className="text-sm text-card-foreground leading-loose">
                 {`"${item.text}"`}
               </p>
               <p className="text-xs text-muted-foreground mt-1.5 font-medium">

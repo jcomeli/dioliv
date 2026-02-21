@@ -36,17 +36,21 @@ export function HeroSection() {
           <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.2] tracking-tight text-white text-balance">
             {"아파트 창문 청소,"}
             <br />
-            <span className="text-primary">{"아직도 직접 닦으세요?"}</span>
+            <span className="text-primary">{"아직도 혼자 하세요?"}</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-white/80 leading-relaxed max-w-2xl">
-            {"창문로봇청소기(에코백스 윈봇) + 전문가 수작업. 거실창 8만원부터. 하루 최대 3집 한정."}
+          <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-white/90 leading-loose max-w-2xl">
+            {"에코백스 윈봇 + 전문가 수작업으로 꼼꼼히 마감합니다."}
+            <br className="sm:block" />
+            <span className="text-white/95">
+              {"거실창 8만원부터 · 층수 제한 없음 · 하루 최대 3집"}
+            </span>
           </p>
 
           {/* Small note */}
-          <p className="mt-3 text-sm text-white/45">
-            {"한 집 기준 2~3시간 작업 / 하루 최대 3집(품질·검수 시간 확보)"}
+          <p className="mt-3 text-sm text-white/60">
+            {"한 집 2~3시간 작업"}
           </p>
 
           {/* CTAs */}

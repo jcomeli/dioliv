@@ -15,7 +15,7 @@
   --secondary: oklch(0.97 0.005 260);
   --secondary-foreground: oklch(0.20 0.02 260);
   --muted: oklch(0.96 0.004 260);
-  --muted-foreground: oklch(0.45 0.02 260);
+  --muted-foreground: oklch(0.52 0.02 260);
   --accent: oklch(0.78 0.12 75);
   --accent-foreground: oklch(0.20 0.04 75);
   --destructive: oklch(0.55 0.22 28);
@@ -120,7 +120,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground leading-[1.7];
   }
 }
 

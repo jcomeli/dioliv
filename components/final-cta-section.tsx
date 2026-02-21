@@ -21,13 +21,13 @@ export function FinalCtaSection() {
         </span>
 
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight text-balance">
-          {"이번 달 좋은 시간대는"}
+          {"인기 시간대는"}
           <br />
           <span className="text-primary">{"빠르게 마감"}</span>
           {"됩니다"}
         </h2>
 
-        <p className="mt-5 text-white/50 text-sm md:text-base max-w-md mx-auto leading-relaxed">
+        <p className="mt-5 text-white/70 text-sm md:text-base max-w-md mx-auto leading-loose">
           {"아파트 단지 공동구매 환영 / 상가 별도 문의 / 로봇 대여 가능"}
         </p>
 
@@ -39,7 +39,7 @@ export function FinalCtaSection() {
           >
             <a href={KAKAO_CHANNEL} target="_blank" rel="noopener noreferrer">
               <MessageCircle className="mr-2 h-5 w-5" />
-              {"카톡 무료 견적"}
+              {"카톡 무료 견적 · 부담 없이 문의"}
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </Button>

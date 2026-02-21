@@ -8,19 +8,19 @@ const solutions = [
     icon: Bot,
     title: "로봇(윈봇) + 전문가 수작업 마감",
     description:
-      "Ecovacs Winbot으로 1차 세척 후, 전문가가 유리 청소 전문 장비로 수작업 마감합니다. 로봇 단독 청소보다 균일하고 깔끔한 결과를 보장합니다.",
+      "Ecovacs Winbot으로 1차 세척 후, 전문가가 유리 청소 전문 장비로 수작업 마감합니다. 로봇 단독보다 균일하고 깔끔한 마감 품질.",
   },
   {
     icon: ShieldCheck,
     title: "안전벨트/하네스 + 이중 보호",
     description:
-      "위험 작업 시 안전벨트·하네스 착용, 로봇 낙하 대비 안전고리 + 전원선 이중 보호. 추락 리스크를 원천 차단합니다.",
+      "위험 작업 시 안전벨트·하네스 착용, 로봇 낙하 대비 안전고리 + 전원선 이중 보호. 안전장비 이중 착용으로 추락 위험 원천 차단.",
   },
   {
     icon: Sparkles,
     title: "친환경 세정제 + 전문 장비 마감",
     description:
-      "국내 유통 친환경 유리전용 세정제(키엘 글라스킹 등)만 사용. 아이·반려동물 가정도 안심. 유해 물질 최소화.",
+      "국내 유통 친환경 유리전용 세정제(키엘 글라스킹 등)만 사용. 아이·반려동물 있는 가정도 안심. 유해 물질 최소화.",
   },
 ]
 
@@ -72,7 +72,7 @@ export function SolutionSection() {
               <h3 className="text-lg font-bold text-card-foreground mb-3">
                 {solution.title}
               </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-loose">
                 {solution.description}
               </p>
             </div>
@@ -81,7 +81,7 @@ export function SolutionSection() {
 
         {/* Honest expectation note */}
         <div className="mt-10 rounded-2xl border border-border bg-card p-5 md:p-6 text-center">
-          <p className="text-sm text-muted-foreground leading-relaxed">
+          <p className="text-sm text-muted-foreground leading-loose">
             {"※ 유리에 오래 고착된 일부 오염은 100% 제거가 어려울 수 있으며, 현장 상태에 따라 안내드립니다."}
           </p>
         </div>

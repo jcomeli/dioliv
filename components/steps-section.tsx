@@ -8,7 +8,7 @@ const steps = [
     icon: MessageCircle,
     number: "01",
     title: "카톡/전화로 예약",
-    description: "카카오톡 또는 전화로 간편하게 예약하세요. 희망 날짜와 시간을 조율합니다.",
+    description: "카톡 또는 전화로 간편 예약. 원하는 날짜·시간 조율 가능.",
   },
   {
     icon: ClipboardCheck,
@@ -20,7 +20,7 @@ const steps = [
     icon: Sparkles,
     number: "03",
     title: "함께 확인 · 마무리",
-    description: "작업 완료 후 함께 확인. 불만족 시 재시공 대응.",
+    description: "작업 완료 후 함께 점검. 불만족 시 당일 재시공.",
   },
 ]
 
@@ -81,7 +81,7 @@ export function StepsSection() {
               <h3 className="text-xl font-bold text-white mb-2">
                 {step.title}
               </h3>
-              <p className="text-sm text-white/55 leading-relaxed max-w-xs mx-auto">
+              <p className="text-base text-white/75 leading-loose max-w-xs mx-auto">
                 {step.description}
               </p>
             </div>
