@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 
 const KAKAO_CHANNEL = "http://pf.kakao.com/_lfCjn/chat"
 const PHONE_NUMBER = "tel:010-2643-1922"
+const DRONE_PAGE = "/drone"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -40,7 +41,7 @@ export function Navbar() {
 
         <div className="hidden md:flex items-center gap-7 shrink-0">
           {[
-            { href: KAKAO_CHANNEL, label: "드론 외벽청소 문의", external: true, highlight: true },
+            { href: DRONE_PAGE, label: "드론 외벽청소 문의", external: true, highlight: true },
             { href: "#why", label: "문제점" },
             { href: "#solution", label: "해결책" },
             { href: "#reviews", label: "후기" },
@@ -97,7 +98,7 @@ export function Navbar() {
         <div className="md:hidden border-t border-border bg-background/98 backdrop-blur-xl max-h-[85vh] overflow-y-auto">
           <div className="flex flex-col px-4 py-4 gap-0.5">
             {[
-              { href: KAKAO_CHANNEL, label: "드론 외벽청소 문의", external: true, highlight: true },
+              { href: DRONE_PAGE, label: "드론 외벽청소 문의", external: true, highlight: true },
               { href: "#why", label: "문제점" },
               { href: "#solution", label: "해결책" },
               { href: "#reviews", label: "후기" },

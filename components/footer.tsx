@@ -5,12 +5,12 @@ const NAVER_PLACE = "https://naver.me/xExIe66q"
 const DAANGN = "https://www.daangn.com/kr/local-profile/dio%EB%A6%AC%EB%B9%99%EC%95%A4%EB%94%94%EC%9E%90%EC%9D%B8-w8feq9gkef3n/"
 const SMARTSTORE = "https://smartstore.naver.com/dioliv"
 
-export function Footer() {
+export function Footer({ logoHref = "#" }: { logoHref?: string }) {
   return (
     <footer className="border-t border-border bg-card py-8 sm:py-10 md:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <a href="#" className="flex items-center shrink-0">
+          <a href={logoHref} className="flex items-center shrink-0">
             <Image
               src="/images/logo.png"
               alt="DIO 리빙앤디자인"
