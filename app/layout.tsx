@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next"
+import Script from "next/script"
 import { Noto_Sans_KR } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import {
@@ -95,6 +96,22 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${notoSansKR.variable} font-sans antialiased`}>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-H37BYR3TT4"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-H37BYR3TT4');
+            `,
+          }}
+        />
         <JsonLd />
         {children}
         <Analytics />
