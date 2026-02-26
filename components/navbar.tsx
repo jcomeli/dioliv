@@ -28,7 +28,7 @@ export function Navbar() {
       }`}
     >
       <nav className="mx-auto max-w-7xl flex items-center justify-between gap-3 px-4 sm:px-5 lg:px-10 pt-[calc(0.75rem+env(safe-area-inset-top))] pb-3 sm:py-3.5 min-h-[3.5rem] md:min-h-0 md:pt-0">
-        <a href="#" className="flex items-center min-w-0 flex-1 md:flex-initial">
+        <a href="/" className="flex items-center min-w-0 flex-1 md:flex-initial">
           <Image
             src="/images/logo.png"
             alt="DIO 리빙앤디자인"
