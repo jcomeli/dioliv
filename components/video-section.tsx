@@ -28,9 +28,7 @@ export function VideoSection() {
     <section ref={sectionRef} id="video" className="py-20 sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
         <div className="text-center mb-14 md:mb-20">
-          <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">
-            Video
-          </span>
+          <span className="section-label">Video</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight text-balance">
             <span className="text-primary">영상</span>
             {"으로 보는 DIO 드론청소"}
@@ -43,7 +41,7 @@ export function VideoSection() {
           }`}
         >
           {/* 메인 영상 */}
-          <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-lg hover:shadow-xl hover:shadow-foreground/5 transition-all">
+          <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-md hover:shadow-lg hover:shadow-foreground/5 transition-all duration-300">
             <div className="aspect-video relative bg-muted">
               <iframe
                 src={`https://www.youtube.com/embed/${MAIN_VIDEO_ID}?rel=0`}
@@ -65,7 +63,7 @@ export function VideoSection() {
           </div>
 
           {/* 작업과정 영상 */}
-          <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-lg hover:shadow-xl hover:shadow-foreground/5 transition-all">
+          <div className="rounded-2xl border border-border bg-card overflow-hidden shadow-md hover:shadow-lg hover:shadow-foreground/5 transition-all duration-300">
             <div className="aspect-video relative bg-muted">
               <iframe
                 src={`https://www.youtube.com/embed/${PROCESS_VIDEO_ID}?rel=0`}

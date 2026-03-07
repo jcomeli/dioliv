@@ -120,8 +120,17 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground leading-[1.7];
+    @apply bg-background text-foreground leading-[1.7] antialiased;
   }
+  /* Section titles: slightly tighter letter-spacing for a more refined look */
+  h2 {
+    @apply tracking-tight;
+  }
+}
+
+/* Reusable section label for consistent, professional hierarchy */
+.section-label {
+  @apply inline-block text-[11px] font-semibold tracking-[0.25em] uppercase text-primary mb-4;
 }
 
 /* Hide scrollbar for review one-liners */

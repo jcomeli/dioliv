@@ -15,9 +15,7 @@ export function FinalCtaSection() {
       </div>
 
       <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-5 lg:px-10 text-center">
-        <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-5">
-          {"Book Now"}
-        </span>
+        <span className="section-label block mb-5">Book Now</span>
 
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight text-balance">
           {"인기 시간대는"}
@@ -34,7 +32,7 @@ export function FinalCtaSection() {
           <Button
             asChild
             size="lg"
-            className="bg-[#FEE500] text-[#191919] hover:bg-[#FEE500]/90 rounded-full px-8 py-7 text-base font-bold shadow-xl transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto"
+            className="bg-[#FEE500] text-[#191919] hover:bg-[#FEE500]/90 rounded-full px-8 py-7 text-base font-bold shadow-lg transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto"
           >
             <a href={KAKAO_CHANNEL} target="_blank" rel="noopener noreferrer">
               <MessageCircle className="mr-2 h-5 w-5" />

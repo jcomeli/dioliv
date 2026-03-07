@@ -44,9 +44,7 @@ export function SolutionSection() {
     <section ref={sectionRef} id="solution" className="py-20 sm:py-24 md:py-32 bg-secondary/50">
       <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
         <div className="text-center mb-14 md:mb-20">
-          <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">
-            {"Solution"}
-          </span>
+          <span className="section-label">Solution</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight text-balance">
             {"DIO의"}
             <span className="text-primary">{" 3가지 해결책"}</span>
@@ -56,7 +54,7 @@ export function SolutionSection() {
           {solutions.map((solution, i) => (
             <div
               key={solution.title}
-              className={`group rounded-2xl bg-card border border-border p-7 lg:p-9 transition-all duration-700 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 ${
+              className={`group rounded-2xl bg-card border border-border p-7 lg:p-9 transition-all duration-500 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5 ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"

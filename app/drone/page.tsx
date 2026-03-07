@@ -76,11 +76,11 @@ const faqs = [
   },
   {
     q: "가능 지역은?",
-    a: "동탄/화성/용인/오산/평택 등입니다.",
+    a: "전국 단위로 진행합니다.",
   },
   {
-    q: "파일럿 방식이란?",
-    a: "일부 구간 테스트 후 만족 시 확대하는 방식입니다.",
+    q: "제안 방식이란?",
+    a: "일부 구간 먼저 진행 후 만족하시면 확대하는 방식입니다.",
   },
 ]
 
@@ -168,7 +168,7 @@ export default function DronePage() {
             합니다
           </h1>
           <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-white/90 leading-loose">
-            동탄/화성/용인 중심 파일럿(선착순)
+            전국 단위
           </p>
           <div className="mt-8 sm:mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center">
             <Button
@@ -178,7 +178,7 @@ export default function DronePage() {
             >
               <a href={KAKAO_CHANNEL} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-5 w-5" />
-                파일럿 신청하기
+                드론 청소 문의하기
                 <ArrowRight className="ml-2 h-5 w-5" />
               </a>
             </Button>
@@ -205,9 +205,7 @@ export default function DronePage() {
       <section className="py-20 sm:py-24 md:py-32" id="problem">
         <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
           <div className="text-center mb-14 md:mb-20">
-            <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">
-              Problem
-            </span>
+            <span className="section-label">Problem</span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight text-balance">
               이런 고민 있으신가요?
             </h2>
@@ -216,7 +214,7 @@ export default function DronePage() {
             {problems.map((p) => (
               <div
                 key={p.text}
-                className="rounded-2xl border border-border bg-card p-7 lg:p-9 transition-all duration-700 hover:shadow-xl hover:shadow-foreground/5 hover:-translate-y-1"
+                className="rounded-2xl border border-border bg-card p-7 lg:p-9 transition-all duration-500 hover:shadow-lg hover:shadow-foreground/5 hover:-translate-y-0.5"
               >
                 <p className="text-base text-muted-foreground leading-loose">{p.text}</p>
               </div>
@@ -229,9 +227,7 @@ export default function DronePage() {
       <section className="bg-[#0B1120] py-20 sm:py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
           <div className="text-center mb-14 md:mb-20">
-            <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">
-              Process
-            </span>
+            <span className="section-label">Process</span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight text-balance">
               <span className="text-primary">사전 점검</span>
               {" → 안전 통제 → 구간별 세척/검수"}
@@ -255,9 +251,7 @@ export default function DronePage() {
       <section className="py-20 sm:py-24 md:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
           <div className="text-center mb-14 md:mb-20">
-            <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">
-              Scope
-            </span>
+            <span className="section-label">Scope</span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight text-balance">
               적용 범위
             </h2>
@@ -288,9 +282,7 @@ export default function DronePage() {
       <section className="bg-secondary/50 py-20 sm:py-24 md:py-32 overflow-hidden" id="faq">
         <div className="mx-auto max-w-3xl px-4 sm:px-5 lg:px-10">
           <div className="text-center mb-14 md:mb-20">
-            <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">
-              FAQ
-            </span>
+            <span className="section-label">FAQ</span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight text-balance">
               자주 묻는 질문
             </h2>
@@ -328,14 +320,12 @@ export default function DronePage() {
         </div>
       </section>
 
-      {/* 6. Pilot Offer */}
+      {/* 6. 드론 청소 문의 */}
       <section className="py-20 sm:py-24 md:py-32">
         <div className="mx-auto max-w-3xl px-4 sm:px-5 lg:px-10 text-center">
-          <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">
-            Pilot
-          </span>
+          <span className="section-label">Inquiry</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
-            선착순 파일럿 제안
+            드론 청소 문의
           </h2>
           <p className="mt-4 text-lg text-muted-foreground leading-loose max-w-xl mx-auto">
             현장 진단 + 작업 공지문 템플릿 + 구간별 리포트(요약) 제공
@@ -343,11 +333,11 @@ export default function DronePage() {
           <Button
             asChild
             size="lg"
-            className="mt-10 rounded-full bg-[#FEE500] text-[#191919] hover:bg-[#FEE500]/90 px-8 py-7 text-base font-bold shadow-xl transition-all duration-300 hover:-translate-y-0.5"
+            className="mt-10 rounded-full bg-[#FEE500] text-[#191919] hover:bg-[#FEE500]/90 px-8 py-7 text-base font-bold shadow-lg transition-all duration-300 hover:-translate-y-0.5"
           >
             <a href={KAKAO_CHANNEL} target="_blank" rel="noopener noreferrer">
               <MessageCircle className="mr-2 h-5 w-5" />
-              파일럿 신청하기
+              드론 청소 문의하기
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </Button>
@@ -358,9 +348,7 @@ export default function DronePage() {
       <section className="bg-secondary/50 py-20 sm:py-24 md:py-32" id="form">
         <div className="mx-auto max-w-xl px-4 sm:px-5 lg:px-10">
           <div className="text-center mb-10">
-            <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">
-              Contact
-            </span>
+            <span className="section-label">Contact</span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
               문의하기
             </h2>

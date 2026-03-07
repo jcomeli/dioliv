@@ -68,9 +68,7 @@ export function ReviewsSection() {
     <section ref={sectionRef} id="reviews" className="py-20 sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
         <div className="text-center mb-14 md:mb-20">
-          <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">
-            {"Reviews"}
-          </span>
+          <span className="section-label">Reviews</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight text-balance">
             {"실제 고객"}
             <span className="text-primary">{" 후기"}</span>

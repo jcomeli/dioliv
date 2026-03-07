@@ -50,7 +50,7 @@ export function HeroSection() {
             <Button
               asChild
               size="lg"
-              className="bg-[#FEE500] text-[#191919] hover:bg-[#FEE500]/90 rounded-full px-8 py-7 text-base font-bold shadow-xl transition-all duration-300 hover:-translate-y-0.5"
+              className="bg-[#FEE500] text-[#191919] hover:bg-[#FEE500]/90 rounded-full px-8 py-7 text-base font-bold shadow-lg transition-all duration-300 hover:-translate-y-0.5"
             >
               <a href={KAKAO_CHANNEL} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-5 w-5" />

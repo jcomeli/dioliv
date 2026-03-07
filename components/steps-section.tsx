@@ -44,9 +44,7 @@ export function StepsSection() {
     <section ref={sectionRef} className="py-20 sm:py-24 md:py-32 bg-[#0B1120]">
       <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
         <div className="text-center mb-14 md:mb-20">
-          <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">
-            {"Process"}
-          </span>
+          <span className="section-label">Process</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight text-balance">
             <span className="text-primary">{"단 3단계"}</span>
             {"면 끝."}

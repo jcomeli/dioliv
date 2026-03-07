@@ -50,9 +50,7 @@ export function ProblemSection() {
     <section ref={sectionRef} id="why" className="py-20 sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
         <div className="text-center mb-14 md:mb-20">
-          <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase text-primary mb-4">
-            {"Problem"}
-          </span>
+          <span className="section-label">Problem</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight text-balance">
             {"창문 청소,"}
             {" "}
@@ -64,7 +62,7 @@ export function ProblemSection() {
           {problems.map((problem, i) => (
             <div
               key={problem.title}
-              className={`group relative rounded-2xl bg-card border border-border p-7 lg:p-9 transition-all duration-700 hover:shadow-xl hover:shadow-foreground/5 hover:-translate-y-1 ${
+              className={`group relative rounded-2xl bg-card border border-border p-7 lg:p-9 transition-all duration-500 hover:shadow-lg hover:shadow-foreground/5 hover:-translate-y-0.5 ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
