@@ -2,16 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import {
-  ArrowRight,
-  MessageCircle,
-  Home,
-  CheckCircle2,
-  Building2,
-  Sparkles,
-  ChevronDown,
-  Phone,
-} from "lucide-react"
+import { ArrowRight, MessageCircle, Home, CheckCircle2, Building2, Sparkles, ChevronDown, Phone } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import {
@@ -19,6 +10,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
+import { partnerApartments } from "@/lib/partner-apartments"
 
 const KAKAO_CHANNEL = "http://pf.kakao.com/_lfCjn/chat"
 const PHONE_NUMBER = "tel:010-2643-1922"
@@ -109,6 +101,33 @@ export default function ComplexPage() {
           홈화면으로 돌아가기
         </Link>
       </div>
+
+      {/* 현재 제휴 단지 전광판 */}
+      <section className="border-b border-border bg-secondary/60">
+        <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10 py-2.5 flex items-center gap-3 overflow-hidden">
+          <div className="inline-flex items-center gap-1.5 shrink-0">
+            <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary/10">
+              <Building2 className="h-3.5 w-3.5 text-primary" />
+            </span>
+            <span className="text-[11px] sm:text-xs font-semibold tracking-[0.18em] uppercase text-primary">
+              현재 제휴 진행 중인 단지
+            </span>
+          </div>
+          <div className="relative flex-1 overflow-hidden">
+            <div className="partner-marquee flex items-center gap-6 text-xs sm:text-sm text-muted-foreground">
+              {[...partnerApartments, ...partnerApartments].map((name, idx) => (
+                <span
+                  key={`${name}-${idx}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/80 px-3.5 py-1.5 shadow-sm whitespace-nowrap"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="font-medium text-foreground/90">{name}</span>
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* 1. Hero */}
       <section className="relative min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center overflow-hidden">

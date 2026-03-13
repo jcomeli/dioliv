@@ -146,3 +146,21 @@
 html {
   scroll-behavior: smooth;
 }
+
+@keyframes partner-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.partner-marquee {
+  width: max-content;
+  animation: partner-marquee 110s linear infinite;
+}
+
+.partner-marquee:hover {
+  animation-play-state: paused;
+}
