@@ -40,8 +40,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/hero-window-before-after.png",
-        width: 1200,
-        height: 630,
+        width: 731,
+        height: 732,
         alt: "창문 청소 전후 비교 – DIO 리빙앤디자인",
       },
     ],
@@ -63,21 +63,7 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: SITE_URL },
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
   },
 }
 

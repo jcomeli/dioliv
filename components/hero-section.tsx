@@ -2,10 +2,10 @@
 
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Phone, MessageCircle, Bot, ShieldCheck, Clock, FileCheck } from "lucide-react"
+import { trackEvent } from "@/lib/analytics"
+import { ArrowRight, MessageCircle, Bot, ShieldCheck, Clock, FileCheck } from "lucide-react"
 
 const KAKAO_CHANNEL = "http://pf.kakao.com/_lfCjn/chat"
-const PHONE_NUMBER = "tel:010-2643-1922"
 
 const badges = [
   { icon: Bot, label: "창문로봇(에코백스 윈봇)+전문가 수작업" },
@@ -16,7 +16,7 @@ const badges = [
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-[680px] sm:min-h-[720px] md:min-h-screen flex items-center overflow-hidden">
       <div className="absolute inset-0">
         <Image
           src="/images/hero-window-before-after.png"
@@ -29,18 +29,18 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-[#0B1120]/75" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-5 lg:px-10 pt-[calc(8.5rem+env(safe-area-inset-top,0px))] pb-24 sm:pt-28 sm:pb-28 md:pt-40 md:pb-40 w-full">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-5 lg:px-10 pt-[calc(7rem+env(safe-area-inset-top,0px))] pb-20 sm:pt-28 sm:pb-24 md:pt-36 md:pb-32 w-full">
         <div className="max-w-3xl">
           <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.2] tracking-tight text-white text-balance">
-            {"아파트 창문 청소,"}
+            {"동탄 아파트 창문·외창 청소"}
             <br />
-            <span className="text-primary">{"아직도 혼자 하세요?"}</span>
+            <span className="text-primary">{"거실창 8만원부터"}</span>
           </h1>
           <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-white/90 leading-loose max-w-2xl">
-            {"에코백스 윈봇 + 전문가 수작업으로 꼼꼼히 마감합니다."}
+            {"창문청소 로봇과 전문가 수작업으로 꼼꼼히 마감합니다."}
             <br className="sm:block" />
             <span className="text-white/95">
-              {"거실창 8만원부터 · 층수 제한 없음 · 하루 최대 3집"}
+              {"아파트명과 창문 전체 사진을 보내주시면 먼저 견적을 안내합니다."}
             </span>
           </p>
           <p className="mt-3 text-sm text-white/60">
@@ -52,9 +52,9 @@ export function HeroSection() {
               size="lg"
               className="bg-[#FEE500] text-[#191919] hover:bg-[#FEE500]/90 rounded-full px-8 py-7 text-base font-bold shadow-lg transition-all duration-300 hover:-translate-y-0.5"
             >
-              <a href={KAKAO_CHANNEL} target="_blank" rel="noopener noreferrer">
+              <a href={KAKAO_CHANNEL} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent("kakao_click", { location: "hero" })}>
                 <MessageCircle className="mr-2 h-5 w-5" />
-                {"카톡으로 무료 견적"}
+                {"카톡으로 사진견적 받기"}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </a>
             </Button>
@@ -64,9 +64,9 @@ export function HeroSection() {
               variant="outline"
               className="rounded-full px-8 py-7 text-base font-bold border-white/20 text-white/90 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:text-white transition-all duration-300"
             >
-              <a href={PHONE_NUMBER}>
-                <Phone className="mr-2 h-5 w-5" />
-                {"전화 상담"}
+              <a href="#estimate" onClick={() => trackEvent("estimate_click", { location: "hero" })}>
+                <ArrowRight className="mr-2 h-5 w-5" />
+                {"예상 가격 확인"}
               </a>
             </Button>
           </div>

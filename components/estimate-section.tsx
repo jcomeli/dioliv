@@ -4,6 +4,7 @@ import { useState, useCallback, useRef, useEffect } from "react"
 import Image from "next/image"
 import { Plus, Minus, Copy, CheckCheck, MessageCircle, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { trackEvent } from "@/lib/analytics"
 
 const KAKAO_CHANNEL = "http://pf.kakao.com/_lfCjn/chat"
 
@@ -19,7 +20,7 @@ const windowItems: WindowItem[] = [
   { key: "living_sym", label: "거실창 기본(대칭형)", price: 100000, priceLabel: "10만원", images: ["/images/windows/living-sym.png"] },
   { key: "living_asym", label: "거실창 비대칭형", price: 80000, priceLabel: "8만원", images: ["/images/windows/living-asym.png"] },
   { key: "split", label: "입면분할창", price: 160000, priceLabel: "16만원", images: ["/images/windows/split.png"] },
-  { key: "room", label: "방창", price: 30000, priceLabel: "2~4만원", images: ["/images/windows/room-1.png", "/images/windows/room-2.png"] },
+  { key: "room", label: "방창", price: 40000, priceLabel: "4만원/개", images: ["/images/windows/room-1.png", "/images/windows/room-2.png"] },
   { key: "railing", label: "유리난간", price: 10000, priceLabel: "1만원/개", images: [] },
 ]
 
@@ -61,22 +62,21 @@ export function EstimateSection() {
     setCounts((prev) => ({ ...prev, [key]: Math.max((prev[key] || 0) - 1, 0) }))
   }, [])
 
-  // room price varies 2~4만원, use midpoint 3만원 for min, 4만원 for max
   const totalMin = (counts.living_sym * 100000)
     + (counts.living_asym * 80000)
     + (counts.split * 160000)
-    + (counts.room * 20000)
+    + (counts.room * 40000)
     + (counts.railing * 10000)
-    + (screenOption ? 50000 : 0)
+    + (screenOption ? 100000 : 0)
 
   const totalMax = (counts.living_sym * 100000)
     + (counts.living_asym * 80000)
     + (counts.split * 160000)
     + (counts.room * 40000)
     + (counts.railing * 10000)
-    + (screenOption ? 50000 : 0)
+    + (screenOption ? 100000 : 0)
 
-  const hasSelection = Object.values(counts).some((v) => v > 0)
+  const hasSelection = Object.values(counts).some((v) => v > 0) || screenOption
 
   const buildMessage = useCallback(() => {
     const lines: string[] = ["[DIO 간편 견적]"]
@@ -84,7 +84,7 @@ export function EstimateSection() {
       const c = counts[item.key] || 0
       if (c > 0) lines.push(`- ${item.label}: ${c}개`)
     })
-    if (screenOption) lines.push("- 방충망/창틀청소(옵션) 5만원")
+    if (screenOption) lines.push("- 방충망/창틀청소(옵션): 집 전체 10만원부터")
     if (memo.trim()) lines.push(`- 비고: ${memo.trim()}`)
     if (totalMin === totalMax) {
       lines.push(`예상 견적: ${formatKRW(totalMin)}원`)
@@ -102,6 +102,15 @@ export function EstimateSection() {
     } catch {
       // fallback
     }
+  }, [buildMessage])
+
+  const handleCopyAndChat = useCallback(() => {
+    trackEvent("estimate_copy_kakao", { location: "estimate" })
+    window.open(KAKAO_CHANNEL, "_blank", "noopener,noreferrer")
+    navigator.clipboard.writeText(buildMessage()).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    }).catch(() => undefined)
   }, [buildMessage])
 
   return (
@@ -188,7 +197,7 @@ export function EstimateSection() {
           <div className="mt-5 flex items-center justify-between rounded-xl bg-muted/50 border border-border px-4 py-3.5">
             <div className="flex flex-col">
               <span className="text-sm font-bold text-foreground">{"방충망/창틀청소(옵션)"}</span>
-              <span className="text-xs text-muted-foreground">{"5만원"}</span>
+              <span className="text-xs text-muted-foreground">{"집 전체 10만원부터"}</span>
             </div>
             <button
               type="button"
@@ -248,20 +257,22 @@ export function EstimateSection() {
           </div>
 
           <p className="mt-3 text-xs text-muted-foreground text-center">
-            {"최종 견적은 창 구조/오염도 확인 후 확정됩니다."}
+            {screenOption
+              ? "방충망/창틀청소는 집 전체 기본요금 10만원을 반영했으며, 최종 견적은 창 구조/오염도 확인 후 확정됩니다."
+              : "최종 견적은 창 구조/오염도 확인 후 확정됩니다."}
           </p>
 
           {/* Actions */}
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
             <Button
-              asChild
+              type="button"
+              onClick={handleCopyAndChat}
+              disabled={!hasSelection}
               className="flex-1 bg-[#FEE500] text-[#191919] hover:bg-[#FEE500]/90 rounded-full py-6 font-bold shadow-md transition-all"
             >
-              <a href={KAKAO_CHANNEL} target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="mr-2 h-4 w-4" />
-                {"카톡으로 견적 보내기"}
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
+              <MessageCircle className="mr-2 h-4 w-4" />
+              {copied ? "복사 완료 · 카톡에 붙여넣기" : "견적 복사 후 카톡 상담"}
+              <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button
               variant="outline"

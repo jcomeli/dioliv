@@ -24,6 +24,25 @@ const trustItems = [
   },
 ]
 
+const faqs = [
+  {
+    question: "기본 가격에 무엇이 포함되나요?",
+    answer: "선택한 창의 실내창과 외부창 청소, 로봇 작업과 작업자의 수작업 마감이 포함됩니다. 방충망과 창틀은 집 전체 10만원부터 추가할 수 있습니다.",
+  },
+  {
+    question: "표시된 가격과 최종 견적이 달라질 수 있나요?",
+    answer: "표시 금액은 일반적인 창 구조의 시작 가격입니다. 창 크기와 개수, 개폐 구조, 오염도에 따라 달라질 수 있으며 방문 전에 사진을 확인하고 최종 금액을 안내합니다.",
+  },
+  {
+    question: "비가 오거나 날씨가 추워도 작업하나요?",
+    answer: "안전과 작업 품질에 영향을 주는 강풍·폭우에는 일정을 조정할 수 있습니다. 결빙 위험이 있는 영하 기온에서는 작업하지 않습니다.",
+  },
+  {
+    question: "어떤 사진을 보내야 견적을 받을 수 있나요?",
+    answer: "아파트명과 평형, 청소할 창문 전체가 보이는 사진, 창문이 열리는 구조가 보이는 사진을 카톡으로 보내주시면 됩니다.",
+  },
+]
+
 export function TrustSection() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
@@ -103,6 +122,24 @@ export function TrustSection() {
                 {"카톡 문의"}
               </a>
             </Button>
+          </div>
+        </div>
+
+        <div className="mx-auto mt-16 max-w-3xl">
+          <div className="mb-7 text-center">
+            <span className="section-label">FAQ</span>
+            <h3 className="text-2xl font-extrabold text-foreground sm:text-3xl">{"예약 전에 많이 묻는 질문"}</h3>
+          </div>
+          <div className="space-y-3">
+            {faqs.map((faq) => (
+              <details key={faq.question} className="group rounded-2xl border border-border bg-card p-5 open:shadow-md">
+                <summary className="cursor-pointer list-none pr-7 text-base font-bold text-foreground marker:hidden">
+                  {faq.question}
+                  <span className="float-right text-primary transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-3 text-sm leading-loose text-muted-foreground">{faq.answer}</p>
+              </details>
+            ))}
           </div>
         </div>
 

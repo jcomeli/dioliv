@@ -29,7 +29,7 @@ const plans = [
     unit: "원~",
     highlighted: true,
     badge: "추천",
-    description: "거실 1 + 방 2",
+    description: "대칭형 거실창 1 + 방창 2",
     duration: "90분",
     features: [
       "로봇 + 수작업 마감",
@@ -76,11 +76,11 @@ export function PricingSection() {
         <div className="text-center mb-14 md:mb-20">
           <span className="section-label">Pricing</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight text-balance">
-            {"추가 비용 없는 투명한 "}
+            {"작업 전에 확인하는 투명한 "}
             <span className="text-primary">{"가격"}</span>
           </h2>
           <p className="mt-4 text-muted-foreground text-base md:text-lg leading-loose max-w-xl mx-auto">
-            {"창틀/방충망 청소는 별도 비용(옵션)입니다."}
+            {"기본 작업 범위와 옵션 가격을 먼저 확인하고 신청하세요."}
           </p>
         </div>
 
@@ -160,6 +160,17 @@ export function PricingSection() {
               </Button>
             </div>
           ))}
+        </div>
+
+        <div className="mt-7 rounded-2xl border border-border bg-card p-5 sm:p-6">
+          <h3 className="text-base font-extrabold text-foreground">{"가격에 포함되는 범위"}</h3>
+          <div className="mt-3 grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
+            <p>{"기본: 선택한 창의 실내창·외부창, 로봇청소와 수작업 마감"}</p>
+            <p>{"옵션: 방충망·창틀 집 전체 10만원부터"}</p>
+          </div>
+          <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+            {"표시 금액은 일반적인 구조의 시작 가격입니다. 창 크기·구조·개수·오염도에 따라 달라질 수 있으며 방문 전에 최종 금액을 안내합니다."}
+          </p>
         </div>
 
         <div className="mt-12 rounded-2xl border-2 border-primary bg-primary/5 p-6 md:p-8">

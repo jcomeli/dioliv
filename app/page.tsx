@@ -11,10 +11,11 @@ import { TrustSection } from "@/components/trust-section"
 import { FinalCtaSection } from "@/components/final-cta-section"
 import { Footer } from "@/components/footer"
 import { partnerApartments } from "@/lib/partner-apartments"
+import { MobileQuickActions } from "@/components/mobile-quick-actions"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background pb-20 md:pb-0">
       <Navbar />
       <section className="border-b border-border bg-secondary/60">
         <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10 py-2.5 flex items-center gap-3 overflow-hidden">
@@ -51,6 +52,7 @@ export default function Home() {
       <TrustSection />
       <FinalCtaSection />
       <Footer />
+      <MobileQuickActions />
     </main>
   )
 }

@@ -35,7 +35,7 @@ export function Navbar() {
             alt="DIO 리빙앤디자인"
             width={560}
             height={160}
-            className="h-[7.5rem] sm:h-[9rem] md:h-[9rem] w-auto max-w-[85vw] md:max-w-none object-contain object-left"
+            className="h-14 sm:h-16 md:h-20 w-auto max-w-[72vw] md:max-w-none object-contain object-left"
             priority
           />
         </a>
