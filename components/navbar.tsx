@@ -24,8 +24,8 @@ export function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/95 backdrop-blur-xl border-b border-border shadow-sm"
-          : "bg-transparent"
+          ? "bg-white/82 backdrop-blur-2xl border-b border-white/70 shadow-[0_12px_40px_-28px_rgba(15,35,80,0.6)]"
+          : "bg-gradient-to-b from-[#06101f]/65 to-transparent"
       }`}
     >
       <nav className="mx-auto max-w-7xl flex items-center justify-between gap-3 px-4 sm:px-5 lg:px-10 pt-[calc(0.75rem+env(safe-area-inset-top))] pb-3 sm:py-3.5 min-h-[3.5rem] md:min-h-0 md:pt-0">
@@ -44,17 +44,16 @@ export function Navbar() {
           {[
             { href: COMPLEX_PAGE, label: "단지 제휴", external: false, highlight: true },
             { href: DRONE_PAGE, label: "드론 외벽청소 문의", external: true, highlight: true },
-            { href: "#why", label: "문제점" },
-            { href: "#solution", label: "해결책" },
-            { href: "#reviews", label: "후기" },
-            { href: "#pricing", label: "가격" },
+            { href: "#results", label: "작업 전후" },
             { href: "#estimate", label: "간편견적" },
+            { href: "#pricing", label: "가격" },
+            { href: "#reviews", label: "후기" },
           ].map((link) => (
             <a
               key={link.label}
               href={link.href}
               {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className={`text-sm font-semibold hover:opacity-80 transition-opacity duration-300 ${
+              className={`text-sm font-bold hover:text-primary transition-colors duration-300 ${
                 link.highlight ? "text-primary" : scrolled ? "text-foreground" : "text-white"
               }`}
             >
@@ -64,17 +63,19 @@ export function Navbar() {
         </div>
 
         <div className="hidden md:flex items-center gap-2.5">
-          <Button
-            asChild
-            size="sm"
-            variant="outline"
-            className="rounded-full px-4 text-sm font-semibold border-border hover:bg-muted"
-          >
-            <a href={PHONE_NUMBER}>
-              <Phone className="mr-1.5 h-3.5 w-3.5" />
-              {"010-2643-1922"}
-            </a>
-          </Button>
+          <div className="hidden 2xl:block">
+            <Button
+              asChild
+              size="sm"
+              variant="outline"
+              className="rounded-full px-4 text-sm font-semibold border-border hover:bg-muted"
+            >
+              <a href={PHONE_NUMBER}>
+                <Phone className="mr-1.5 h-3.5 w-3.5" />
+                {"010-2643-1922"}
+              </a>
+            </Button>
+          </div>
           <Button
             asChild
             size="sm"
@@ -102,11 +103,10 @@ export function Navbar() {
             {[
               { href: COMPLEX_PAGE, label: "단지 제휴", external: false, highlight: true },
               { href: DRONE_PAGE, label: "드론 외벽청소 문의", external: true, highlight: true },
-              { href: "#why", label: "문제점" },
-              { href: "#solution", label: "해결책" },
-              { href: "#reviews", label: "후기" },
-              { href: "#pricing", label: "가격" },
+              { href: "#results", label: "작업 전후" },
               { href: "#estimate", label: "간편견적" },
+              { href: "#pricing", label: "가격" },
+              { href: "#reviews", label: "후기" },
             ].map((link) => (
               <a
                 key={link.label}

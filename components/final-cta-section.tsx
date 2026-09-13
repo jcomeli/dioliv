@@ -6,18 +6,19 @@ const PHONE_NUMBER = "tel:010-2643-1922"
 
 export function FinalCtaSection() {
   return (
-    <section className="relative py-20 sm:py-24 md:py-36 overflow-hidden bg-[#0B1120]">
+    <section className="relative py-24 sm:py-28 md:py-36 overflow-hidden bg-[#06101f]">
       <div className="absolute inset-0 opacity-[0.03]">
         <div className="absolute inset-0" style={{
           backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
           backgroundSize: "40px 40px"
         }} />
       </div>
+      <div className="absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/25 blur-[110px]" />
 
       <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-5 lg:px-10 text-center">
         <span className="section-label block mb-5">Book Now</span>
 
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight text-balance">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-[-0.045em] text-white leading-tight text-balance">
           {"인기 시간대는"}
           <br />
           <span className="text-primary">{"빠르게 마감"}</span>

@@ -1,12 +1,17 @@
 "use client"
 
-import { Shield, Thermometer, Leaf, Store, Info, MessageCircle } from "lucide-react"
+import { Shield, Thermometer, Leaf, Store, Info, MessageCircle, BadgeCheck } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 
 const KAKAO_CHANNEL = "http://pf.kakao.com/_lfCjn/chat"
 
 const trustItems = [
+  {
+    icon: BadgeCheck,
+    title: "산업안전기사 자격 보유",
+    description: "산업안전기사 자격을 보유한 작업자가 현장 안전 기준을 확인하며 작업합니다.",
+  },
   {
     icon: Shield,
     title: "배상책임보험 가입",
@@ -41,6 +46,10 @@ const faqs = [
     question: "어떤 사진을 보내야 견적을 받을 수 있나요?",
     answer: "아파트명과 평형, 청소할 창문 전체가 보이는 사진, 창문이 열리는 구조가 보이는 사진을 카톡으로 보내주시면 됩니다.",
   },
+  {
+    question: "동탄 외 지역도 창문청소가 가능한가요?",
+    answer: "동탄을 중심으로 화성, 수원, 오산, 용인, 평택 등 이동 시간 약 1시간 안팎의 경기남부 지역을 방문합니다. 교통 상황과 작업 일정에 따라 달라질 수 있으므로 주소를 보내주시면 가능 여부를 안내합니다.",
+  },
 ]
 
 export function TrustSection() {
@@ -60,7 +69,7 @@ export function TrustSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-20 sm:py-24 md:py-32">
+    <section ref={sectionRef} className="py-24 sm:py-28 md:py-36">
       <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
         <div className="text-center mb-14 md:mb-20">
           <span className="section-label">Trust & Policy</span>
@@ -72,11 +81,11 @@ export function TrustSection() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-7">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
           {trustItems.map((item, i) => (
             <div
               key={item.title}
-              className={`text-center rounded-2xl bg-card border border-border p-7 transition-all duration-500 hover:shadow-lg hover:shadow-foreground/5 hover:-translate-y-0.5 ${
+              className={`text-center rounded-[2rem] premium-card p-7 transition-all duration-500 hover:shadow-[0_26px_70px_-34px_rgba(15,35,80,0.5)] hover:-translate-y-1 ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"

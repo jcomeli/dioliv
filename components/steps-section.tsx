@@ -41,7 +41,8 @@ export function StepsSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-20 sm:py-24 md:py-32 bg-[#0B1120]">
+    <section ref={sectionRef} className="relative overflow-hidden py-24 sm:py-28 md:py-36 bg-[#07111f]">
+      <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 rounded-full bg-primary/12 blur-3xl" />
       <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
         <div className="text-center mb-14 md:mb-20">
           <span className="section-label">Process</span>
@@ -54,7 +55,7 @@ export function StepsSection() {
           {steps.map((step, i) => (
             <div
               key={step.title}
-              className={`relative text-center transition-all duration-700 ${
+              className={`relative rounded-[2rem] border border-white/10 bg-white/[0.045] p-8 text-center backdrop-blur-sm transition-all duration-700 hover:-translate-y-1 hover:border-primary/35 hover:bg-white/[0.07] ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
@@ -65,7 +66,7 @@ export function StepsSection() {
                 <div className="hidden md:block absolute top-10 left-[60%] w-[80%] h-px bg-white/10" />
               )}
               <div className="relative inline-flex flex-col items-center">
-                <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10 mb-5 border border-primary/20">
+                <div className="flex h-20 w-20 items-center justify-center rounded-[1.4rem] bg-primary/15 mb-5 border border-primary/25 shadow-[0_15px_45px_-20px_rgba(37,99,235,0.8)]">
                   <step.icon className="h-9 w-9 text-primary" />
                 </div>
                 <span className="absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground text-xs font-bold">

@@ -65,7 +65,7 @@ export function ReviewsSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="reviews" className="py-20 sm:py-24 md:py-32">
+    <section ref={sectionRef} id="reviews" className="py-24 sm:py-28 md:py-36">
       <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
         <div className="text-center mb-14 md:mb-20">
           <span className="section-label">Reviews</span>
@@ -81,7 +81,7 @@ export function ReviewsSection() {
           {mainReviews.map((review, i) => (
             <div
               key={review.apartment}
-              className={`relative rounded-2xl bg-card border border-border p-7 lg:p-9 transition-all duration-700 hover:shadow-lg hover:shadow-foreground/5 ${
+              className={`relative rounded-[2rem] premium-card p-7 lg:p-9 transition-all duration-700 hover:-translate-y-1 hover:shadow-[0_26px_70px_-34px_rgba(15,35,80,0.5)] ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"

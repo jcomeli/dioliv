@@ -71,7 +71,7 @@ export function PricingSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="pricing" className="py-20 sm:py-24 md:py-32 bg-secondary/50">
+    <section ref={sectionRef} id="pricing" className="py-24 sm:py-28 md:py-36 bg-secondary/55">
       <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
         <div className="text-center mb-14 md:mb-20">
           <span className="section-label">Pricing</span>
@@ -88,10 +88,10 @@ export function PricingSection() {
           {plans.map((plan, i) => (
             <div
               key={plan.name}
-              className={`relative rounded-2xl border p-7 lg:p-9 transition-all duration-700 ${
+              className={`relative rounded-[2rem] border p-7 lg:p-9 transition-all duration-700 ${
                 plan.highlighted
                   ? "bg-[#0B1120] text-white border-[#0B1120] shadow-2xl shadow-foreground/15 md:scale-[1.03]"
-                  : "bg-card border-border hover:shadow-lg hover:shadow-foreground/5"
+                  : "premium-card hover:-translate-y-1 hover:shadow-[0_26px_70px_-34px_rgba(15,35,80,0.5)]"
               } ${
                 isVisible
                   ? "opacity-100 translate-y-0"

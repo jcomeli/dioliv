@@ -114,37 +114,38 @@ export function EstimateSection() {
   }, [buildMessage])
 
   return (
-    <section ref={sectionRef} id="estimate" className="py-20 sm:py-24 md:py-32 bg-secondary/50">
+    <section ref={sectionRef} id="estimate" className="relative py-24 sm:py-28 md:py-36 bg-[#07111f] text-white overflow-hidden">
+      <div className="pointer-events-none absolute -left-40 top-20 h-[28rem] w-[28rem] rounded-full bg-primary/20 blur-3xl" />
       <div className="mx-auto max-w-3xl px-4 sm:px-5 lg:px-10">
         <div className={`text-center mb-12 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <span className="section-label">Quick Estimate</span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight text-balance">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-[-0.045em] text-white leading-tight text-balance">
             <span className="text-primary">{"간편 견적"}</span>
-            {" 계산기"}
+            <span className="block sm:inline">{" 계산기"}</span>
           </h2>
-          <p className="mt-4 text-muted-foreground text-sm md:text-base max-w-md mx-auto">
+          <p className="mt-5 text-white/65 text-base md:text-lg max-w-md mx-auto">
             {"항목과 수량을 선택하면 예상 견적 범위를 바로 확인할 수 있습니다."}
           </p>
         </div>
 
         {/* Estimator Card */}
-        <div className={`rounded-2xl bg-card border border-border shadow-lg p-4 sm:p-6 md:p-8 transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <div className={`rounded-[1.75rem] sm:rounded-[2rem] bg-card border border-white/15 shadow-[0_28px_90px_-36px_rgba(0,0,0,0.75)] p-3 sm:p-6 md:p-8 transition-all duration-700 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           {/* Window categories */}
           <div className="flex flex-col gap-3 sm:gap-4">
             {windowItems.map((item) => (
               <div
                 key={item.key}
-                className="flex items-center justify-between rounded-xl bg-muted/50 border border-border px-3 sm:px-4 py-3 sm:py-3.5 gap-2 sm:gap-3"
+                className="flex flex-col rounded-2xl bg-muted/50 border border-border px-3.5 sm:px-4 py-3.5 gap-3 sm:flex-row sm:items-center sm:justify-between"
               >
-                <div className="flex items-center gap-3 flex-1 min-w-0">
+                <div className="flex w-full items-center gap-3 sm:flex-1 min-w-0">
                   {/* Images - 전체가 보이도록 object-contain, 유리난간은 이미지 없음 */}
                   {item.images.length > 0 && (
                     <div className={`flex items-center gap-1.5 shrink-0 ${item.images.length === 2 ? "gap-1" : ""}`}>
                       {item.images.map((img, idx) => (
                         <div
                           key={idx}
-                          className={`relative rounded-lg overflow-hidden border border-border/50 bg-card shrink-0 ${
-                            item.images.length === 2 ? "h-14 w-14" : "h-16 w-24"
+                          className={`relative rounded-xl overflow-hidden border border-border/50 bg-card shrink-0 ${
+                            item.images.length === 2 ? "h-12 w-12 sm:h-14 sm:w-14" : "h-14 w-20 sm:h-16 sm:w-24"
                           }`}
                         >
                           <Image
@@ -159,31 +160,31 @@ export function EstimateSection() {
                     </div>
                   )}
                   {/* Label and Price */}
-                  <div className="flex flex-col min-w-0 flex-1">
-                    <span className="text-sm font-bold text-foreground">{item.label}</span>
-                    <span className="text-xs text-muted-foreground">
+                  <div className="flex min-w-0 flex-1 flex-col">
+                    <span className="text-[15px] font-extrabold leading-snug text-foreground break-keep">{item.label}</span>
+                    <span className="mt-1 text-sm font-semibold text-primary">
                       {item.priceLabel}
                     </span>
                   </div>
                 </div>
                 {/* Counter */}
-                <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <div className="flex w-full items-center justify-end gap-2 border-t border-border/70 pt-3 sm:w-auto sm:border-0 sm:pt-0 shrink-0">
                   <button
                     type="button"
                     onClick={() => decrement(item.key)}
-                    className="flex h-10 w-10 sm:h-8 sm:w-8 items-center justify-center rounded-lg border border-border bg-card text-foreground hover:bg-muted active:bg-muted transition-colors disabled:opacity-30 touch-manipulation"
+                    className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-card text-foreground shadow-sm hover:bg-muted active:bg-muted transition-colors disabled:opacity-30 touch-manipulation"
                     disabled={!counts[item.key]}
                     aria-label={`${item.label} 감소`}
                   >
                     <Minus className="h-4 w-4" />
                   </button>
-                  <span className="w-8 text-center text-base font-bold text-foreground tabular-nums">
+                  <span className="w-10 text-center text-base font-extrabold text-foreground tabular-nums">
                     {counts[item.key] || 0}
                   </span>
                   <button
                     type="button"
                     onClick={() => increment(item.key)}
-                    className="flex h-10 w-10 sm:h-8 sm:w-8 items-center justify-center rounded-lg border border-border bg-card text-foreground hover:bg-muted active:bg-muted transition-colors touch-manipulation"
+                    className="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/25 bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 active:bg-primary/85 transition-colors touch-manipulation"
                     aria-label={`${item.label} 증가`}
                   >
                     <Plus className="h-4 w-4" />
