@@ -1,9 +1,16 @@
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "단지 제휴",
+  title: "아파트 창문청소 단지 제휴·공동구매",
   description:
-    "아파트 단지 단위 유리창 청소 제휴. 관리사무소·입주민대표·공동구매 추진 단지를 위한 단체 계약, 세대 수 할인, 일정 정리.",
+    "관리사무소·입주민대표·공동구매 담당자를 위한 아파트 창문청소 단지 제휴. 참여 세대 할인, 입주민 공지 자료와 세대별 일정을 함께 준비합니다.",
+  alternates: { canonical: "/complex" },
+  openGraph: {
+    title: "아파트 창문청소 단지 제휴·공동구매 | DIO 리빙앤디자인",
+    description: "참여 세대 할인부터 입주민 공지와 일정 운영까지 함께하는 아파트 창문청소 단지 제휴입니다.",
+    url: "/complex",
+    images: [{ url: "/images/cases/seodongtan-after.jpeg", alt: "아파트 창문청소 단지 제휴" }],
+  },
 }
 
 export default function ComplexLayout({

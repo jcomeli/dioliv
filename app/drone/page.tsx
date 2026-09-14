@@ -1,473 +1,65 @@
 "use client"
 
-import { useState, useCallback } from "react"
-import Link from "next/link"
+import { useCallback, useState } from "react"
 import Image from "next/image"
-import {
-  Droplets,
-  VideoOff,
-  CloudRain,
-  ArrowRight,
-  MessageCircle,
-  CheckCircle2,
-  ClipboardCheck,
-  ChevronDown,
-  Home,
-  AlertCircle,
-} from "lucide-react"
+import Link from "next/link"
+import { ArrowRight, BadgeCheck, Building2, CheckCircle2, ChevronDown, ClipboardCheck, CloudSun, Home, MapPin, MessageCircle, Phone, ScanSearch, ShieldCheck, Sparkles, Wind } from "lucide-react"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Checkbox } from "@/components/ui/checkbox"
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { VideoSection } from "@/components/video-section"
 
-const KAKAO_CHANNEL = "http://pf.kakao.com/_lfCjn/chat"
-
-const problems = [
-  { text: "고층 외벽은 업체 부르기 부담" },
-  { text: "물자국/뿌연 느낌이 남음" },
-  { text: "안전·민원 걱정" },
-  { text: "시간 잡기 어렵고 결과 편차" },
+const KAKAO = "http://pf.kakao.com/_lfCjn/chat"
+const useCases = [
+  { icon: Building2, title: "아파트·주상복합", text: "고층 외벽과 공용부 유리의 오염 상태를 현장 조건에 맞춰 검토합니다." },
+  { icon: Sparkles, title: "오피스·상업시설", text: "영업과 보행 동선을 고려해 구간별 작업 순서와 통제 범위를 제안합니다." },
+  { icon: CloudSun, title: "태양광 패널·기타", text: "접근이 어려운 넓은 면적도 구조와 설비 조건을 확인한 뒤 안내합니다." },
 ]
-
-const steps = [
-  { title: "사전 점검", desc: "현장 조건·구간 확인" },
-  { title: "안전 통제", desc: "작업구역·풍속 등 점검" },
-  { title: "구간별 세척/검수", desc: "구간 단위 세척 후 검수" },
+const process = [
+  ["01", "사진·주소로 사전 진단", "건물 전경, 높이, 작업 희망 구간을 보내주시면 적용 가능성을 먼저 확인합니다."],
+  ["02", "현장 조사·안전 계획", "풍속, 비행 공간, 보행 동선과 주변 시설을 살펴 작업 방식과 통제 계획을 세웁니다."],
+  ["03", "구간별 세척·검수", "테스트 구간을 확인한 뒤 본 작업을 진행하고 결과를 구간별로 점검합니다."],
 ]
-
-const scopeItems = [
-  "아파트 / 주상복합",
-  "오피스",
-  "태양광 패널 등",
-]
-const exclusions = "강풍·우천·결빙 시 작업 불가, 균열·손상 유리 제외 등"
-
 const faqs = [
-  {
-    q: "촬영·녹화는 하나요?",
-    a: "실시간 조종 확인만 하며, 원칙적으로 녹화/저장 없습니다.",
-  },
-  {
-    q: "세정제는 뭘 쓰나요?",
-    a: "기본은 물세척이며, 필요 시 저발포 최소량 사용 후 사전 고지합니다.",
-  },
-  {
-    q: "안전·풍속 기준은?",
-    a: "조건이 불리하면 즉시 중단하며, 안전 우선으로 운영합니다.",
-  },
-  {
-    q: "물튐·파손 걱정은?",
-    a: "작업구역 통제, 사전 점검, 구간별 운영으로 최소화합니다.",
-  },
-  {
-    q: "가격은 어떻게 되나요?",
-    a: "현장 조건(높이·오염도·동선) 기반으로 범위 안내 후 확정합니다.",
-  },
-  {
-    q: "소요시간은?",
-    a: "구간 단위로 안내드립니다.",
-  },
-  {
-    q: "가능 지역은?",
-    a: "전국 단위로 진행합니다.",
-  },
-  {
-    q: "제안 방식이란?",
-    a: "일부 구간 먼저 진행 후 만족하시면 확대하는 방식입니다.",
-  },
-]
-
-const buildingTypes = ["아파트", "주상복합", "오피스", "기타"]
-const concernOptions = [
-  "촬영/녹화",
-  "세정제",
-  "안전",
-  "물튐",
-  "가격",
-  "기타",
+  ["모든 건물에 드론 작업이 가능한가요?", "아닙니다. 건물 구조, 주변 장애물, 비행 가능 구역과 기상 조건을 사전에 확인한 뒤 가능 여부를 안내합니다."],
+  ["촬영 영상은 저장하나요?", "작업 확인을 위한 실시간 화면을 사용하며, 별도 협의가 없는 경우 촬영물을 저장하지 않는 것을 원칙으로 합니다."],
+  ["비나 바람이 강해도 작업하나요?", "안전 기준에 맞지 않는 강풍·우천·결빙 상황에서는 작업을 연기하거나 중단합니다."],
+  ["견적에 필요한 자료는 무엇인가요?", "건물 주소, 전체 외관 사진, 대략적인 층수와 청소 희망 면을 보내주시면 빠르게 1차 검토할 수 있습니다."],
 ]
 
 export default function DronePage() {
-  const [name, setName] = useState("")
-  const [phone, setPhone] = useState("")
+  const [building, setBuilding] = useState("")
   const [region, setRegion] = useState("")
-  const [regionOther, setRegionOther] = useState("")
-  const [buildingType, setBuildingType] = useState("")
   const [floors, setFloors] = useState("")
-  const [concerns, setConcerns] = useState<Record<string, boolean>>({})
   const [copied, setCopied] = useState(false)
-
-  const toggleConcern = (key: string) => {
-    setConcerns((prev) => ({ ...prev, [key]: !prev[key] }))
-  }
-
-  const buildMessage = useCallback(() => {
-    const lines = ["[드론 외벽청소 문의]"]
-    if (name.trim()) lines.push(`이름: ${name.trim()}`)
-    if (phone.trim()) lines.push(`연락처: ${phone.trim()}`)
-    const regionText = region === "기타" || region === "직접입력" ? regionOther.trim() : region
-    if (regionText) lines.push(`지역: ${regionText}`)
-    if (buildingType) lines.push(`건물 유형: ${buildingType}`)
-    if (floors.trim()) lines.push(`대략 높이(층): ${floors.trim()}`)
-    const selectedConcerns = Object.entries(concerns).filter(([, v]) => v).map(([k]) => k)
-    if (selectedConcerns.length) lines.push(`걱정되는 점: ${selectedConcerns.join(", ")}`)
-    return lines.join("\n")
-  }, [name, phone, region, regionOther, buildingType, floors, concerns])
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    const msg = buildMessage()
-    try {
-      await navigator.clipboard.writeText(msg)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 3000)
-      window.open(KAKAO_CHANNEL, "_blank", "noopener,noreferrer")
-    } catch {
-      window.open(KAKAO_CHANNEL, "_blank", "noopener,noreferrer")
-    }
-  }
+  const buildMessage = useCallback(() => ["[드론 외벽청소 문의]", region && `지역/주소: ${region}`, building && `건물 유형: ${building}`, floors && `대략 높이: ${floors}`].filter(Boolean).join("\n"), [region, building, floors])
+  const handleSubmit = async (e: React.FormEvent) => { e.preventDefault(); try { await navigator.clipboard.writeText(buildMessage()); setCopied(true); setTimeout(() => setCopied(false), 3000) } finally { window.open(KAKAO, "_blank", "noopener,noreferrer") } }
 
   return (
-    <main className="min-h-screen bg-background">
-      {/* 상단: 홈으로 - 메인 네비와 통일 */}
-      <div className="sticky top-0 z-50 flex items-center justify-between border-b border-border bg-background/95 px-4 sm:px-5 lg:px-10 py-3.5 backdrop-blur-xl">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-sm font-semibold text-foreground hover:opacity-80 transition-opacity"
-        >
-          <Home className="h-4 w-4" />
-          홈화면으로 돌아가기
-        </Link>
-      </div>
+    <main className="min-h-screen bg-background pb-20 md:pb-0">
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#06101f]/75 backdrop-blur-xl"><div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-5 lg:px-10"><Link href="/" className="inline-flex items-center gap-2 text-sm font-bold text-white/85 hover:text-white"><Home className="h-4 w-4" /> 홈으로</Link><span className="hidden text-xs font-bold tracking-[0.18em] text-white/55 sm:block">DIO DRONE CLEANING</span><a href="#inquiry" className="rounded-full bg-[#FEE500] px-4 py-2 text-xs font-extrabold text-[#191919]">현장 문의</a></div></header>
 
-      {/* 1. Hero - 배경 이미지 + 메인 히어로 톤 통일 */}
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/drone-hero.png"
-            alt="드론으로 고층 외벽 유리 세척 – 고층 빌딩 유리창에 드론이 세척액을 분사하는 모습"
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-[#0B1120]/70" />
-        </div>
-        <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-5 lg:px-10 py-20 sm:py-24 md:py-32 text-center">
-          <h1 className="text-2xl font-extrabold leading-tight text-white sm:text-4xl md:text-5xl lg:text-6xl tracking-tight">
-            고층 외벽 / 유리,
-            <br />
-            <span className="text-primary">로프 작업 없이 드론으로 세척</span>
-            합니다
-          </h1>
-          <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-white/90 leading-loose">
-            전국 단위
-          </p>
-          <div className="mt-8 sm:mt-10 flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <Button
-              asChild
-              size="lg"
-              className="rounded-full bg-[#FEE500] text-[#191919] hover:bg-[#FEE500]/90 px-8 py-7 text-base font-bold shadow-xl transition-all duration-300 hover:-translate-y-0.5"
-            >
-              <a href={KAKAO_CHANNEL} target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="mr-2 h-5 w-5" />
-                드론 청소 문의하기
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
-            </Button>
-          </div>
-          <div className="mt-8 sm:mt-12 flex flex-wrap justify-center gap-2 sm:gap-3">
-            {[
-              { icon: Droplets, label: "물세척 중심" },
-              { icon: VideoOff, label: "녹화/저장 원칙 금지" },
-              { icon: CloudRain, label: "기상 기준 준수" },
-            ].map(({ icon: Icon, label }) => (
-              <span
-                key={label}
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/8 backdrop-blur-sm px-3 py-2 sm:px-4 text-xs sm:text-sm font-medium text-white/80"
-              >
-                <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-primary shrink-0" />
-                {label}
-              </span>
-            ))}
-          </div>
-        </div>
+      <section className="relative min-h-[780px] overflow-hidden bg-[#06101f] pt-16 md:min-h-[860px]">
+        <Image src="/images/drone-hero.png" alt="드론을 활용한 고층 건물 외벽 유리 세척" fill priority sizes="100vw" className="object-cover object-center" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#06101f]/95 via-[#06101f]/76 to-[#06101f]/20" /><div className="absolute inset-0 bg-gradient-to-t from-[#06101f]/80 via-transparent to-[#06101f]/25" />
+        <div className="relative mx-auto flex min-h-[720px] max-w-7xl items-center px-4 py-20 sm:px-5 lg:px-10"><div className="max-w-4xl"><span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-bold text-white/85 backdrop-blur"><ScanSearch className="h-4 w-4 text-primary" /> 현장 진단부터 시작하는 외벽청소</span><h1 className="mt-6 text-[2.65rem] font-black leading-[1.06] tracking-[-0.055em] text-white sm:text-6xl lg:text-7xl">고층 외벽의 새로운 접근,<br /><span className="text-primary">드론으로 더 효율적으로</span></h1><p className="mt-7 max-w-2xl text-base leading-8 text-white/75 sm:text-xl">건물 구조와 주변 환경을 먼저 진단하고, 드론 적용 가능 구간과 안전한 작업 계획을 제안합니다.</p><div className="mt-9 flex flex-col gap-3 sm:flex-row"><Button asChild size="lg" className="h-14 rounded-full bg-[#FEE500] px-7 font-extrabold text-[#191919] hover:bg-[#FEE500]/90"><a href="#inquiry"><MessageCircle className="mr-2 h-5 w-5" />현장 검토 요청하기<ArrowRight className="ml-2 h-5 w-5" /></a></Button><Button asChild size="lg" variant="outline" className="h-14 rounded-full border-white/20 bg-white/8 px-7 font-bold text-white hover:bg-white/15 hover:text-white"><a href="tel:010-2643-1922"><Phone className="mr-2 h-5 w-5" />전화 상담</a></Button></div><div className="mt-10 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-white/70">{["전국 현장 검토", "산업안전기사 자격 보유", "기상·현장 기준 우선"].map(v => <span key={v} className="inline-flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-primary" />{v}</span>)}</div></div></div>
       </section>
 
-      {/* 2. Problem - 메인 Problem 섹션 스타일 */}
-      <section className="py-20 sm:py-24 md:py-32" id="problem">
-        <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
-          <div className="text-center mb-14 md:mb-20">
-            <span className="section-label">Problem</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight text-balance">
-              이런 고민 있으신가요?
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-7">
-            {problems.map((p) => (
-              <div
-                key={p.text}
-                className="rounded-2xl border border-border bg-card p-7 lg:p-9 transition-all duration-500 hover:shadow-lg hover:shadow-foreground/5 hover:-translate-y-0.5"
-              >
-                <p className="text-base text-muted-foreground leading-loose">{p.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="py-20 sm:py-28"><div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10"><div className="max-w-2xl"><span className="section-label">Where It Works</span><h2 className="text-3xl font-black tracking-[-0.04em] sm:text-5xl">높고 넓어 접근이 어려운 곳,<br /><span className="text-primary">현장부터 살펴봅니다</span></h2></div><div className="mt-12 grid gap-5 md:grid-cols-3">{useCases.map(({icon:Icon,title,text}) => <article key={title} className="premium-card rounded-[1.75rem] p-7 sm:p-8"><Icon className="h-7 w-7 text-primary" /><h3 className="mt-9 text-xl font-black">{title}</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">{text}</p></article>)}</div></div></section>
 
-      {/* 3. How it works - 메인 Process/Steps 스타일 */}
-      <section className="bg-[#0B1120] py-20 sm:py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
-          <div className="text-center mb-14 md:mb-20">
-            <span className="section-label">Process</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight text-balance">
-              <span className="text-primary">사전 점검</span>
-              {" → 안전 통제 → 구간별 세척/검수"}
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-7 lg:gap-10">
-            {steps.map((step, i) => (
-              <div key={step.title} className="text-center">
-                <div className="inline-flex h-20 w-20 items-center justify-center rounded-2xl bg-primary/10 border border-primary/20 mb-5">
-                  <span className="text-2xl font-extrabold text-primary">{i + 1}</span>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
-                <p className="text-base text-white/75 leading-loose max-w-xs mx-auto">{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 4. What we clean - 메인 카드/섹션 스타일 */}
-      <section className="py-20 sm:py-24 md:py-32">
-        <div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10">
-          <div className="text-center mb-14 md:mb-20">
-            <span className="section-label">Scope</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight text-balance">
-              적용 범위
-            </h2>
-          </div>
-          <ul className="flex flex-wrap justify-center gap-3">
-            {scopeItems.map((item) => (
-              <li
-                key={item}
-                className="inline-flex items-center gap-2 rounded-2xl border border-border bg-card px-5 py-3 text-sm font-medium shadow-sm hover:shadow-foreground/5 transition-all"
-              >
-                <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
-                {item}
-              </li>
-            ))}
-          </ul>
-          <div className="mt-10 rounded-2xl border border-border bg-card p-5 md:p-6 text-center">
-            <p className="text-sm text-muted-foreground leading-loose flex items-center justify-center gap-2">
-              <AlertCircle className="h-4 w-4 shrink-0 text-destructive/80" />
-              제외/제한: {exclusions}
-            </p>
-          </div>
-        </div>
-      </section>
+      <section className="bg-[#06101f] py-20 text-white sm:py-28"><div className="mx-auto max-w-7xl px-4 sm:px-5 lg:px-10"><div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]"><div><span className="section-label">Safety First</span><h2 className="text-3xl font-black tracking-[-0.04em] sm:text-5xl">빠른 작업보다<br />가능한 조건을 먼저</h2><p className="mt-5 text-sm leading-7 text-white/60">드론 외벽청소는 현장마다 조건이 다릅니다. 가능 여부를 먼저 판단하고 안전 계획이 갖춰진 구간만 진행합니다.</p><div className="mt-8 grid grid-cols-2 gap-3">{[[Wind,"풍속·기상 확인"],[ShieldCheck,"통제 구역 설정"],[MapPin,"비행 환경 점검"],[CheckCircle2,"구간별 검수"]].map(([Icon,label]) => { const I = Icon as typeof Wind; return <div key={String(label)} className="rounded-2xl border border-white/10 bg-white/[0.06] p-4"><I className="h-5 w-5 text-primary" /><p className="mt-3 text-sm font-bold">{String(label)}</p></div> })}</div></div><div className="space-y-3">{process.map(([no,title,text]) => <article key={no} className="rounded-[1.5rem] border border-white/10 bg-white/[0.06] p-6 sm:p-7"><div className="flex items-center gap-4"><span className="text-sm font-black text-primary">{no}</span><h3 className="text-lg font-black">{title}</h3></div><p className="mt-4 pl-10 text-sm leading-7 text-white/60">{text}</p></article>)}</div></div></div></section>
 
       <VideoSection />
 
-      {/* 5. FAQ - 재미있는 디자인 */}
-      <section className="bg-secondary/50 py-20 sm:py-24 md:py-32 overflow-hidden" id="faq">
-        <div className="mx-auto max-w-3xl px-4 sm:px-5 lg:px-10">
-          <div className="text-center mb-14 md:mb-20">
-            <span className="section-label">FAQ</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight text-balance">
-              자주 묻는 질문
-            </h2>
-            <p className="mt-3 text-muted-foreground text-base">
-              궁금한 점을 눌러보세요 👇
-            </p>
-          </div>
-          <div className="space-y-3">
-            {faqs.map((faq, i) => (
-              <Collapsible key={faq.q}>
-                <div
-                  className="group faq-card rounded-2xl border-2 border-border bg-card overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-0.5 hover:border-primary/30 has-[[data-state=open]]:border-primary/50 has-[[data-state=open]]:shadow-lg has-[[data-state=open]]:shadow-primary/10 has-[[data-state=open]]:bg-primary/[0.03]"
-                  style={{ animationDelay: `${i * 50}ms` }}
-                >
-                  <CollapsibleTrigger className="flex w-full items-center gap-4 px-5 py-4 text-left hover:bg-muted/20 transition-colors rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary text-sm font-bold tabular-nums">
-                      {i + 1}
-                    </span>
-                    <span className="flex-1 text-sm font-semibold text-foreground pr-2">
-                      {faq.q}
-                    </span>
-                    <ChevronDown className="h-5 w-5 shrink-0 text-primary/70 transition-transform duration-200 [.faq-card:has([data-state=open])_&]:rotate-180" />
-                  </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    <div className="border-t border-border/80 bg-muted/30">
-                      <p className="px-5 py-4 pl-[3.25rem] pr-5 text-sm text-muted-foreground leading-loose sm:pl-14">
-                        {faq.a}
-                      </p>
-                    </div>
-                  </CollapsibleContent>
-                </div>
-              </Collapsible>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="py-20 sm:py-28" id="inquiry"><div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:px-10"><div><span className="section-label">Site Review</span><h2 className="text-3xl font-black tracking-[-0.04em] sm:text-5xl">주소와 사진이면<br /><span className="text-primary">1차 검토가 시작됩니다</span></h2><p className="mt-5 max-w-md text-sm leading-7 text-muted-foreground">아래 세 가지만 남긴 뒤 카카오톡에 건물 전체 사진과 청소 희망 구간을 보내주세요.</p><ul className="mt-7 space-y-3">{["건물 전체가 보이는 외관 사진", "청소가 필요한 면과 오염 상태", "희망 일정 또는 작업 시기"].map(v => <li key={v} className="flex items-center gap-3 text-sm font-semibold"><CheckCircle2 className="h-5 w-5 text-primary" />{v}</li>)}</ul></div><form onSubmit={handleSubmit} className="premium-card rounded-[2rem] p-6 sm:p-9"><div className="grid gap-5"><div><Label htmlFor="region">지역 또는 건물 주소</Label><Input id="region" value={region} onChange={e=>setRegion(e.target.value)} placeholder="예: 경기도 화성시 동탄대로" className="mt-2 h-12 rounded-xl" /></div><div><Label htmlFor="building">건물 유형</Label><select id="building" value={building} onChange={e=>setBuilding(e.target.value)} className="mt-2 h-12 w-full rounded-xl border border-input bg-background px-3 text-sm"><option value="">선택해 주세요</option><option>아파트</option><option>주상복합</option><option>오피스·상가</option><option>태양광 패널</option><option>기타</option></select></div><div><Label htmlFor="floors">대략적인 높이</Label><Input id="floors" value={floors} onChange={e=>setFloors(e.target.value)} placeholder="예: 20층 / 지상 약 60m" className="mt-2 h-12 rounded-xl" /></div><Button type="submit" className="mt-2 h-14 rounded-full bg-[#FEE500] font-extrabold text-[#191919] hover:bg-[#FEE500]/90">{copied ? <><ClipboardCheck className="mr-2 h-5 w-5" />복사 완료 · 카톡에 붙여넣기</> : <><MessageCircle className="mr-2 h-5 w-5" />내용 복사 후 카톡 문의</>}</Button><p className="text-center text-xs leading-5 text-muted-foreground">입력 내용이 복사되고 카카오톡 상담창이 열립니다.</p></div></form></div></section>
 
-      {/* 6. 드론 청소 문의 */}
-      <section className="py-20 sm:py-24 md:py-32">
-        <div className="mx-auto max-w-3xl px-4 sm:px-5 lg:px-10 text-center">
-          <span className="section-label">Inquiry</span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
-            드론 청소 문의
-          </h2>
-          <p className="mt-4 text-lg text-muted-foreground leading-loose max-w-xl mx-auto">
-            현장 진단 + 작업 공지문 템플릿 + 구간별 리포트(요약) 제공
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="mt-10 rounded-full bg-[#FEE500] text-[#191919] hover:bg-[#FEE500]/90 px-8 py-7 text-base font-bold shadow-lg transition-all duration-300 hover:-translate-y-0.5"
-          >
-            <a href={KAKAO_CHANNEL} target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="mr-2 h-5 w-5" />
-              드론 청소 문의하기
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
-          </Button>
-        </div>
-      </section>
+      <section className="bg-secondary/55 py-20 sm:py-28"><div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-5 lg:grid-cols-2 lg:px-10"><div><span className="section-label">FAQ</span><h2 className="text-3xl font-black tracking-[-0.04em] sm:text-5xl">검토 전에<br />궁금한 내용</h2></div><div className="space-y-3">{faqs.map(([q,a],i) => <Collapsible key={q}><div className="faq-card overflow-hidden rounded-2xl border border-border bg-card"><CollapsibleTrigger className="flex w-full items-center gap-3 p-5 text-left font-bold"><span className="text-primary">0{i+1}</span><span className="flex-1">{q}</span><ChevronDown className="h-4 w-4 transition [.faq-card:has([data-state=open])_&]:rotate-180" /></CollapsibleTrigger><CollapsibleContent><p className="border-t border-border px-5 py-5 pl-14 text-sm leading-7 text-muted-foreground">{a}</p></CollapsibleContent></div></Collapsible>)}</div></div></section>
 
-      {/* 7. Lead Form */}
-      <section className="bg-secondary/50 py-20 sm:py-24 md:py-32" id="form">
-        <div className="mx-auto max-w-xl px-4 sm:px-5 lg:px-10">
-          <div className="text-center mb-10">
-            <span className="section-label">Contact</span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
-              문의하기
-            </h2>
-            <p className="mt-4 text-muted-foreground text-base leading-loose">
-              작성 후 카카오톡 채널로 내용이 전달됩니다.
-            </p>
-          </div>
-          <form onSubmit={handleSubmit} className="space-y-5 rounded-2xl border border-border bg-card p-7 lg:p-9 shadow-sm hover:shadow-foreground/5 transition-all">
-            <div>
-              <Label htmlFor="name">이름</Label>
-              <Input
-                id="name"
-                className="mt-1.5"
-                placeholder="이름"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-            <div>
-              <Label htmlFor="phone">연락처(휴대폰)</Label>
-              <Input
-                id="phone"
-                type="tel"
-                className="mt-1.5"
-                placeholder="010-0000-0000"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
-            </div>
-            <div>
-              <Label>지역</Label>
-              <div className="mt-1.5 flex gap-2">
-                <select
-                  className="h-9 flex-1 rounded-md border border-input bg-transparent px-3 text-sm shadow-xs"
-                  value={region}
-                  onChange={(e) => setRegion(e.target.value)}
-                >
-                  <option value="">선택</option>
-                  <option value="동탄">동탄</option>
-                  <option value="화성">화성</option>
-                  <option value="용인">용인</option>
-                  <option value="오산">오산</option>
-                  <option value="평택">평택</option>
-                  <option value="기타">기타/직접입력</option>
-                </select>
-                {(region === "기타" || region === "직접입력") && (
-                  <Input
-                    className="flex-1"
-                    placeholder="지역 입력"
-                    value={regionOther}
-                    onChange={(e) => setRegionOther(e.target.value)}
-                  />
-                )}
-              </div>
-            </div>
-            <div>
-              <Label>건물 유형</Label>
-              <div className="mt-1.5 flex flex-wrap gap-2">
-                {buildingTypes.map((t) => (
-                  <label key={t} className="flex cursor-pointer items-center gap-2">
-                    <input
-                      type="radio"
-                      name="buildingType"
-                      value={t}
-                      checked={buildingType === t}
-                      onChange={() => setBuildingType(t)}
-                      className="h-4 w-4 border-input text-primary"
-                    />
-                    <span className="text-sm">{t}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
-            <div>
-              <Label htmlFor="floors">대략 높이(층수)</Label>
-              <Input
-                id="floors"
-                className="mt-1.5"
-                placeholder="예: 15층"
-                value={floors}
-                onChange={(e) => setFloors(e.target.value)}
-              />
-            </div>
-            <div>
-              <Label>가장 걱정되는 점 (복수 선택 가능)</Label>
-              <div className="mt-2 flex flex-wrap gap-4">
-                {concernOptions.map((opt) => (
-                  <label key={opt} className="flex cursor-pointer items-center gap-2">
-                    <Checkbox
-                      checked={concerns[opt] ?? false}
-                      onCheckedChange={() => toggleConcern(opt)}
-                    />
-                    <span className="text-sm">{opt}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
-            <Button
-              type="submit"
-              size="lg"
-              className="w-full rounded-full bg-[#FEE500] text-[#191919] hover:bg-[#FEE500]/90"
-            >
-              {copied ? (
-                <>
-                  <ClipboardCheck className="mr-2 h-5 w-5" />
-                  복사됨 — 카톡 창에 붙여넣기 해 주세요
-                </>
-              ) : (
-                <>
-                  <MessageCircle className="mr-2 h-5 w-5" />
-                  내용 복사 후 카톡으로 문의하기
-                </>
-              )}
-            </Button>
-          </form>
-        </div>
-      </section>
-
+      <section className="relative overflow-hidden bg-[#06101f] py-20 text-center text-white sm:py-28"><div className="absolute left-1/2 top-1/2 h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/20 blur-[100px]" /><div className="relative mx-auto max-w-3xl px-4"><span className="text-xs font-bold uppercase tracking-[.2em] text-primary">Ask DIO</span><h2 className="mt-5 text-3xl font-black tracking-[-0.04em] sm:text-5xl">우리 건물도 가능한지<br />먼저 확인해 보세요</h2><p className="mx-auto mt-5 max-w-lg text-sm leading-7 text-white/65">현장 조건을 검토한 뒤 적용 가능 구간과 다음 절차를 안내합니다.</p><Button asChild size="lg" className="mt-8 h-14 rounded-full bg-[#FEE500] px-8 font-extrabold text-[#191919] hover:bg-[#FEE500]/90"><a href={KAKAO} target="_blank" rel="noopener noreferrer"><MessageCircle className="mr-2 h-5 w-5" />드론 외벽청소 상담하기<ArrowRight className="ml-2 h-5 w-5" /></a></Button></div></section>
       <Footer logoHref="/" />
+      <div className="fixed inset-x-3 bottom-3 z-50 grid grid-cols-2 gap-2 md:hidden"><a href="tel:010-2643-1922" className="flex h-13 items-center justify-center rounded-full border border-border bg-white font-bold shadow-xl"><Phone className="mr-2 h-4 w-4" />전화</a><a href="#inquiry" className="flex h-13 items-center justify-center rounded-full bg-[#FEE500] font-extrabold text-[#191919] shadow-xl"><MessageCircle className="mr-2 h-4 w-4" />현장 문의</a></div>
     </main>
   )
 }
