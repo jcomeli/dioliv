@@ -7,23 +7,11 @@ import { SITE_URL } from "@/lib/site-config"
  */
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [
-      {
-        userAgent: "*",
-        allow: "/",
-        disallow: ["/api/"],
-      },
-      {
-        userAgent: "Googlebot",
-        allow: "/",
-        disallow: ["/api/"],
-      },
-      {
-        userAgent: "Yeti", // 네이버 봇
-        allow: "/",
-        disallow: ["/api/"],
-      },
-    ],
+    rules: {
+      userAgent: "*",
+      allow: "/",
+      disallow: ["/api/"],
+    },
     sitemap: `${SITE_URL}/sitemap.xml`,
   }
 }

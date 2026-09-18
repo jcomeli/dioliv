@@ -38,9 +38,9 @@ export function HeroSection() {
             실제 고객님 댁 작업 후 사진
           </div>
           <h1 className="text-[2.45rem] sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.08] tracking-[-0.055em] text-white text-balance">
-            {"답답했던 창문 너머 풍경을"}
+            {"동탄 아파트 "}
             <br />
-            <span className="text-primary">{"다시 선명하게"}</span>
+            <span className="text-primary">{"창문·외창·유리 전문청소"}</span>
           </h1>
           <p className="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-white/88 leading-8 max-w-2xl">
             {"동탄 아파트 창문청소·외창청소·유리창청소, 거실창 8만원부터."}

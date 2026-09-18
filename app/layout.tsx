@@ -6,7 +6,6 @@ import {
   SITE_URL,
   SITE_TITLE,
   SITE_DESCRIPTION,
-  SITE_KEYWORDS,
   SITE_NAME,
 } from "@/lib/site-config"
 import "./globals.css"
@@ -25,7 +24,6 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
-  keywords: SITE_KEYWORDS,
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
   publisher: SITE_NAME,
