@@ -17,6 +17,6 @@ export const BUSINESS = {
   representative: "전주형",
   businessNumber: "787-19-02131",
   naverPlace: "https://naver.me/xExIe66q",
-  kakaoChannel: "http://pf.kakao.com/_lfCjn/chat",
+  kakaoChannel: "https://pf.kakao.com/_lfCjn/chat",
   smartStore: "https://smartstore.naver.com/dioliv",
 }

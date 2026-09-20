@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { partnerApartments } from "@/lib/partner-apartments"
 
-const KAKAO = "http://pf.kakao.com/_lfCjn/chat"
+const KAKAO = "https://pf.kakao.com/_lfCjn/chat"
 const benefits = [
   { icon: Users, value: "10세대부터", title: "참여 세대별 할인", text: "참여가 늘수록 세대별 비용을 낮춰 공동구매 혜택이 분명해집니다." },
   { icon: Building2, value: "한 번에", title: "공지와 일정 운영", text: "신청 안내부터 세대별 방문 일정까지 단지 상황에 맞춰 정리합니다." },

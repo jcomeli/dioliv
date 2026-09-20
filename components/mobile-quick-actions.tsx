@@ -3,7 +3,7 @@
 import { Calculator, MessageCircle } from "lucide-react"
 import { trackEvent } from "@/lib/analytics"
 
-const KAKAO_CHANNEL = "http://pf.kakao.com/_lfCjn/chat"
+const KAKAO_CHANNEL = "https://pf.kakao.com/_lfCjn/chat"
 
 export function MobileQuickActions() {
   return (

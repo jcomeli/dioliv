@@ -6,7 +6,7 @@ import { Plus, Minus, Copy, CheckCheck, MessageCircle, ArrowRight } from "lucide
 import { Button } from "@/components/ui/button"
 import { trackEvent } from "@/lib/analytics"
 
-const KAKAO_CHANNEL = "http://pf.kakao.com/_lfCjn/chat"
+const KAKAO_CHANNEL = "https://pf.kakao.com/_lfCjn/chat"
 
 interface WindowItem {
   key: string

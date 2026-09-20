@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { VideoSection } from "@/components/video-section"
 
-const KAKAO = "http://pf.kakao.com/_lfCjn/chat"
+const KAKAO = "https://pf.kakao.com/_lfCjn/chat"
 const useCases = [
   { icon: Building2, title: "아파트·주상복합", text: "고층 외벽과 공용부 유리의 오염 상태를 현장 조건에 맞춰 검토합니다." },
   { icon: Sparkles, title: "오피스·상업시설", text: "영업과 보행 동선을 고려해 구간별 작업 순서와 통제 범위를 제안합니다." },

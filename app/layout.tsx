@@ -10,6 +10,7 @@ import {
 } from "@/lib/site-config"
 import "./globals.css"
 import { JsonLd } from "@/components/json-ld"
+import { ConversionTracking } from "@/components/conversion-tracking"
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ["latin"],
@@ -110,6 +111,7 @@ export default function RootLayout({
           }}
         />
         <JsonLd />
+        <ConversionTracking />
         {children}
         <Analytics />
       </body>

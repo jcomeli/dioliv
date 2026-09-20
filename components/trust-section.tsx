@@ -4,7 +4,7 @@ import { Shield, Thermometer, Leaf, Store, Info, MessageCircle, BadgeCheck } fro
 import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 
-const KAKAO_CHANNEL = "http://pf.kakao.com/_lfCjn/chat"
+const KAKAO_CHANNEL = "https://pf.kakao.com/_lfCjn/chat"
 
 const trustItems = [
   {

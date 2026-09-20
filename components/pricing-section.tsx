@@ -4,7 +4,7 @@ import { Check, ArrowRight, MessageCircle, ShoppingBag, Phone, Users } from "luc
 import { Button } from "@/components/ui/button"
 import { useEffect, useRef, useState } from "react"
 
-const KAKAO_CHANNEL = "http://pf.kakao.com/_lfCjn/chat"
+const KAKAO_CHANNEL = "https://pf.kakao.com/_lfCjn/chat"
 const SMARTSTORE = "https://smartstore.naver.com/dioliv"
 const PHONE_NUMBER = "tel:010-2643-1922"
 

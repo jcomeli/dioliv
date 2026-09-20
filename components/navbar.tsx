@@ -5,7 +5,7 @@ import Image from "next/image"
 import { Menu, X, Phone, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-const KAKAO_CHANNEL = "http://pf.kakao.com/_lfCjn/chat"
+const KAKAO_CHANNEL = "https://pf.kakao.com/_lfCjn/chat"
 const PHONE_NUMBER = "tel:010-2643-1922"
 const DRONE_PAGE = "/drone"
 const COMPLEX_PAGE = "/complex"

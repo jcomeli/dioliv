@@ -1,7 +1,7 @@
 import { MapPin, Navigation, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-const KAKAO_CHANNEL = "http://pf.kakao.com/_lfCjn/chat"
+const KAKAO_CHANNEL = "https://pf.kakao.com/_lfCjn/chat"
 const areas = ["동탄", "화성", "수원", "오산", "용인", "평택"]
 
 export function ServiceAreaSection() {

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Phone, MessageCircle } from "lucide-react"
 
-const KAKAO_CHANNEL = "http://pf.kakao.com/_lfCjn/chat"
+const KAKAO_CHANNEL = "https://pf.kakao.com/_lfCjn/chat"
 const PHONE_NUMBER = "tel:010-2643-1922"
 
 export function FinalCtaSection() {

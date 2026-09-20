@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { trackEvent } from "@/lib/analytics"
 import { ArrowRight, MessageCircle, Bot, ShieldCheck, Clock, FileCheck, Sparkles, BadgeCheck } from "lucide-react"
 
-const KAKAO_CHANNEL = "http://pf.kakao.com/_lfCjn/chat"
+const KAKAO_CHANNEL = "https://pf.kakao.com/_lfCjn/chat"
 
 const badges = [
   { icon: Bot, label: "창문로봇 + 전문가 수작업" },
