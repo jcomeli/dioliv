@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Plus, Minus, Copy, CheckCheck, MessageCircle, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { trackEvent } from "@/lib/analytics"
+import { trackNaverLead } from "@/lib/naver-conversion"
 
 const KAKAO_CHANNEL = "https://pf.kakao.com/_lfCjn/chat"
 
@@ -106,6 +107,7 @@ export function EstimateSection() {
 
   const handleCopyAndChat = useCallback(() => {
     trackEvent("estimate_copy_kakao", { location: "estimate" })
+    trackNaverLead()
     window.open(KAKAO_CHANNEL, "_blank", "noopener,noreferrer")
     navigator.clipboard.writeText(buildMessage()).then(() => {
       setCopied(true)
@@ -256,46 +258,3 @@ export function EstimateSection() {
               <p className="text-sm text-muted-foreground">{"위 항목을 선택하면 예상 견적이 표시됩니다"}</p>
             )}
           </div>
-
-          <p className="mt-3 text-xs text-muted-foreground text-center">
-            {screenOption
-              ? "방충망/창틀청소는 집 전체 기본요금 10만원을 반영했으며, 최종 견적은 창 구조/오염도 확인 후 확정됩니다."
-              : "최종 견적은 창 구조/오염도 확인 후 확정됩니다."}
-          </p>
-
-          {/* Actions */}
-          <div className="mt-6 flex flex-col sm:flex-row gap-3">
-            <Button
-              type="button"
-              onClick={handleCopyAndChat}
-              disabled={!hasSelection}
-              className="flex-1 bg-[#FEE500] text-[#191919] hover:bg-[#FEE500]/90 rounded-full py-6 font-bold shadow-md transition-all"
-            >
-              <MessageCircle className="mr-2 h-4 w-4" />
-              {copied ? "복사 완료 · 카톡에 붙여넣기" : "견적 복사 후 카톡 상담"}
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-            <Button
-              variant="outline"
-              onClick={handleCopy}
-              disabled={!hasSelection}
-              className="rounded-full py-6 font-bold border-border hover:bg-muted transition-all disabled:opacity-40"
-            >
-              {copied ? (
-                <>
-                  <CheckCheck className="mr-2 h-4 w-4 text-green-600" />
-                  {"복사 완료!"}
-                </>
-              ) : (
-                <>
-                  <Copy className="mr-2 h-4 w-4" />
-                  {"견적 내용 복사"}
-                </>
-              )}
-            </Button>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
