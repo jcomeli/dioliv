@@ -110,6 +110,24 @@ export default function RootLayout({
             `,
           }}
         />
+        <Script
+          src="https://wcs.naver.net/wcslog.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="naver-conversion-base"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (window.wcs) {
+                window.wcs_add = window.wcs_add || {};
+                window.wcs_add["wa"] = "s_5a33e543fb90";
+                window.wcs.inflow("dioliv.com");
+                window.wcs_do();
+              }
+            `,
+          }}
+        />
         <JsonLd />
         <ConversionTracking />
         {children}
