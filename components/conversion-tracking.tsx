@@ -2,6 +2,7 @@
 
 import { useEffect } from "react"
 import { trackEvent } from "@/lib/analytics"
+import { trackNaverLead } from "@/lib/naver-conversion"
 
 /**
  * 링크 목적에 따라 핵심 문의 행동을 GA4 이벤트로 기록합니다.
@@ -23,8 +24,10 @@ export function ConversionTracking() {
 
       if (href.startsWith("tel:")) {
         trackEvent("click_phone", { location })
+        trackNaverLead()
       } else if (href.includes("pf.kakao.com")) {
         trackEvent("click_kakao", { location })
+        trackNaverLead()
       } else if (href === "#estimate") {
         trackEvent("click_estimate", { location })
       } else if (href.includes("naver.me/xExIe66q")) {
